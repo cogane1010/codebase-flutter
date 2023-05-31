@@ -215,33 +215,27 @@ class TaskListViewModel extends ChangeNotifier {
     ApiResponse json = await projectListApi.approveOrRejectProjectAndTask(
         moduleName, approvalRequestId, isApprove, notes, TodoListType);
     if (json.success) {
-      var aaaa = json.responseObject['Data'];
-      if (!isEmpty(json.responseObject['Data'])) {
-        var result = BaseResponseApi<ApproveModel>.fromJson(json.responseObject,
-            compileData: (data) => !isEmpty(json.responseObject['Data'])
-                ? ApproveModel.fromJson(json.responseObject['Data'])
-                : ApproveModel());
-        var content =
+      var result = BaseResponseApi<ApproveModel>.fromJson(json.responseObject,
+          compileData: (data) => !isEmpty(json.responseObject['Data'])
+              ? ApproveModel.fromJson(json.responseObject['Data'])
+              : ApproveModel());
+      var content =
+          AppLocalizations.of(NavigationService.navigatorKey.currentContext!)!
+              .translate('not_ok');
+      if (result.isSuccess!) {
+        content =
             AppLocalizations.of(NavigationService.navigatorKey.currentContext!)!
-                .translate('not_ok');
-        if (result.isSuccess!) {
-          var resultData = result.data;
-          if (resultData.IsSuccess!) {
-            content = AppLocalizations.of(
-                    NavigationService.navigatorKey.currentContext!)!
                 .translate('result_ok');
-          } else {
-            if (!isEmpty(resultData.ErroMessage)) {
-              content = resultData.ErroMessage.toString();
-            }
-          }
+      } else {
+        if (!isEmpty(result.errorMessage)) {
+          content = result.errorMessage.toString();
         }
-        showAlertDialog(
-            content: content,
-            context: NavigationService.navigatorKey.currentContext!,
-            defaultActionText: "Đóng");
-        notifyListeners();
       }
+      showAlertDialog(
+          content: content,
+          context: NavigationService.navigatorKey.currentContext!,
+          defaultActionText: "Đóng");
+      notifyListeners();
 
       EasyLoading.dismiss();
     } else {

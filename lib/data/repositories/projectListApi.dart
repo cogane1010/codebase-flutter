@@ -91,9 +91,9 @@ class ProjectListApi extends BaseApi {
       "ResponseNote": ResponseNote
     });
     var urlData =
-        getFullPath('/api/app/TodoList/approveOrRejectProjectAndTask');
+        getFullPath('/api/MobileApproval/approveOrRejectProjectAndTask');
     if (TodoListType == 'ListProgressApproval') {
-      urlData = getFullPath('/api/app/TodoList/approveOrRejectTaskProgress');
+      urlData = getFullPath('/api/MobileApproval/approveOrRejectTaskProgress');
     }
     var response = await httpRequest.sendPost(
       requestBody: request,

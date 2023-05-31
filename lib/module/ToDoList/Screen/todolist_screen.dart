@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../common/widget/base_background.dart';
 import '../../../configs/router.dart';
 import '../../../core/utils/screen_util.dart';
+import '../../../core/utils/theme_util.dart';
 import '../../../resources/asset_image.dart';
 import '../../page/favourites_page.dart';
 import '../../page/people_page.dart';
@@ -83,13 +84,18 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
+                                            padding: EdgeInsets.only(
+                                              top: 5,
+                                              left: 5,
+                                              right: 5,
+                                            ),
                                             width: double.infinity,
                                             height: 30,
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: vm
                                                         .projectPendingheaderBorder,
-                                                    width: 3),
+                                                    width: 2),
                                                 borderRadius: BorderRadius.only(
                                                     topLeft: Radius.circular(
                                                         Dimens.size8),
@@ -103,11 +109,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                           .tittle
                                                           .toString()
                                                       : "",
-                                                  style: TextStyle(
-                                                      color: AppColors.black,
-                                                      fontSize: Dimens.size20,
-                                                      fontWeight:
-                                                          FontWeight.w900),
+                                                  style: textStyleBoldTitle,
                                                 )
                                               ],
                                             ),
@@ -154,14 +156,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                                   .amount
                                                                   .toString()
                                                               : "",
-                                                          style: TextStyle(
-                                                              color: AppColors
-                                                                  .textColor,
-                                                              fontSize:
-                                                                  Dimens.size20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w900),
+                                                          style:
+                                                              textStyleBoldTitle,
                                                         )
                                                       ],
                                                     ))
@@ -212,7 +208,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                 border: Border.all(
                                                     color: vm
                                                         .taskProcessingheaderBorder,
-                                                    width: 3),
+                                                    width: 2),
                                                 borderRadius: BorderRadius.only(
                                                     topLeft: Radius.circular(
                                                         Dimens.size8),
@@ -226,11 +222,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                           .tittle
                                                           .toString()
                                                       : "",
-                                                  style: TextStyle(
-                                                      color: AppColors.black,
-                                                      fontSize: Dimens.size20,
-                                                      fontWeight:
-                                                          FontWeight.w900),
+                                                  style: textStyleBoldTitle,
                                                 )
                                               ],
                                             ),
@@ -277,14 +269,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                                   .amount
                                                                   .toString()
                                                               : "",
-                                                          style: TextStyle(
-                                                              color: AppColors
-                                                                  .textColor,
-                                                              fontSize:
-                                                                  Dimens.size20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w900),
+                                                          style:
+                                                              textStyleBoldTitle,
                                                         )
                                                       ],
                                                     ))
@@ -329,13 +315,15 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
+                                            padding: EdgeInsets.only(
+                                                top: 5, left: 5, right: 5),
                                             width: double.infinity,
                                             height: 30,
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: vm
                                                         .taskProcessingApprovalheaderBorder,
-                                                    width: 3),
+                                                    width: 2),
                                                 borderRadius: BorderRadius.only(
                                                     topLeft: Radius.circular(
                                                         Dimens.size8),
@@ -350,11 +338,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                           .tittle
                                                           .toString()
                                                       : "",
-                                                  style: TextStyle(
-                                                      color: AppColors.black,
-                                                      fontSize: Dimens.size20,
-                                                      fontWeight:
-                                                          FontWeight.w900),
+                                                  style: textStyleBoldTitle,
                                                 )
                                               ],
                                             ),
@@ -401,14 +385,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                                   .amount
                                                                   .toString()
                                                               : "",
-                                                          style: TextStyle(
-                                                              color: AppColors
-                                                                  .textColor,
-                                                              fontSize:
-                                                                  Dimens.size20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w900),
+                                                          style:
+                                                              textStyleBoldTitle,
                                                         )
                                                       ],
                                                     ))
@@ -453,13 +431,15 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
+                                            padding: EdgeInsets.only(
+                                                top: 5, left: 5, right: 5),
                                             width: double.infinity,
                                             height: 50,
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: vm
                                                         .taskProgressApprovalheaderBorder,
-                                                    width: 3),
+                                                    width: 2),
                                                 borderRadius: BorderRadius.only(
                                                     topLeft: Radius.circular(
                                                         Dimens.size8),
@@ -474,11 +454,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                           .tittle
                                                           .toString()
                                                       : "",
-                                                  style: TextStyle(
-                                                      color: AppColors.black,
-                                                      fontSize: Dimens.size20,
-                                                      fontWeight:
-                                                          FontWeight.w900),
+                                                  style: textStyleBoldTitle,
                                                 )
                                               ],
                                             ),
@@ -525,14 +501,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                                   .amount
                                                                   .toString()
                                                               : "",
-                                                          style: TextStyle(
-                                                              color: AppColors
-                                                                  .textColor,
-                                                              fontSize:
-                                                                  Dimens.size20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w900),
+                                                          style:
+                                                              textStyleBoldTitle,
                                                         )
                                                       ],
                                                     ))
