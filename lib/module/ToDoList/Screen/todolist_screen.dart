@@ -147,9 +147,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                     },
                                                     child: Row(
                                                       children: [
-                                                        UiHelper
-                                                            .horizontalBox120,
-                                                        Text(
+                                                        Center(
+                                                            child: Text(
                                                           !isEmpty(vm
                                                                   .projectPending)
                                                               ? vm.projectPending!
@@ -158,7 +157,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                               : "",
                                                           style:
                                                               textStyleBoldTitle,
-                                                        )
+                                                        ))
                                                       ],
                                                     ))
                                               ],
@@ -216,14 +215,15 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                         Dimens.size8))),
                                             child: Column(
                                               children: [
-                                                Text(
+                                                Align(
+                                                    child: Text(
                                                   !isEmpty(vm.taskProcessing)
                                                       ? vm.taskProcessing!
                                                           .tittle
                                                           .toString()
                                                       : "",
                                                   style: textStyleBoldTitle,
-                                                )
+                                                ))
                                               ],
                                             ),
                                           ),
