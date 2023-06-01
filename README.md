@@ -1,6 +1,6 @@
 # brg_management
 
-A new Flutter project of book a golf
+A new Flutter project of job management
 
 ## Getting Started
 
@@ -27,6 +27,16 @@ TODO :
 
 Change App Language by a action.
 
+
+change icon: flutter pub pub run flutter_launcher_icons:main
+
+run command to get package: flutter pub get 
+
+run command to change icon : flutter pub pub run flutter_launcher_icons:main
+
+run command : flutter clean
+
+run command : flutter run
 
 
 
