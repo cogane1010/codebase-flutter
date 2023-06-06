@@ -1,6 +1,7 @@
-# brg_management
+# Flutter project
+This project build base on Flutter. Every one can use it. but leave me a message to know.
 
-A new Flutter project of job management
+Dự án này xây dựng dựa trên Flutter. mọi người có thể sử dụng nó. nhưng để lại cho tôi một tin nhắn để biết
 
 ## Getting Started
 
