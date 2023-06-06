@@ -32,6 +32,7 @@ class ProjectListViewModel extends ChangeNotifier {
   ];
 
   bool isMenu = false;
+  bool isShowButton = true;
 
   void initViewModel({String? ModuleName, String? ToDoListType, bool? IsMenu}) {
     this.selectedStatus = '-1';
@@ -80,6 +81,9 @@ class ProjectListViewModel extends ChangeNotifier {
     this.isMenu = true;
     if (seStatus != '-1') {
       this.selectedStatus = seStatus;
+      getProjectAndTaskList();
+    } else {
+      this.selectedStatus = "-1";
       getProjectAndTaskList();
     }
     notifyListeners();
@@ -210,6 +214,14 @@ class ProjectListViewModel extends ChangeNotifier {
         content =
             AppLocalizations.of(NavigationService.navigatorKey.currentContext!)!
                 .translate('result_ok');
+        if (isApprove) {
+          this.projectDetailModel!.Project!.StatusName = "Đã duyệt";
+        } else {
+          this.projectDetailModel!.Project!.StatusName = "Đã trả lại";
+        }
+        this.isShowButton = false;
+        print(this.projectDetailModel!.Project!.StatusName);
+        notifyListeners();
       } else {
         if (!isEmpty(result.errorMessage)) {
           content = result.errorMessage.toString();

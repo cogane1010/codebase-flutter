@@ -31,7 +31,7 @@ class TaskListViewModel extends ChangeNotifier {
     new StatusModel("1", "approve"),
     new StatusModel("0", "unapprove")
   ];
-
+  bool isShowButton = true;
   void initViewModel({String? ModuleName, String? ToDoListType, bool? IsMenu}) {
     this.selectedStatus = '-1';
     print("initViewModel moduleName ${ModuleName}  ${ToDoListType}");
@@ -83,6 +83,9 @@ class TaskListViewModel extends ChangeNotifier {
     this.isMenu = true;
     if (seStatus != '-1') {
       this.selectedStatus = seStatus;
+      getListProcessingApproval();
+    } else {
+      this.selectedStatus = "-1";
       getListProcessingApproval();
     }
     notifyListeners();
@@ -226,6 +229,14 @@ class TaskListViewModel extends ChangeNotifier {
         content =
             AppLocalizations.of(NavigationService.navigatorKey.currentContext!)!
                 .translate('result_ok');
+        if (isApprove) {
+          this.taskDetailModel.Tasks!.StatusName = "Đã duyệt";
+        } else {
+          this.taskDetailModel.Tasks!.StatusName = "Đã trả lại";
+        }
+        this.isShowButton = false;
+        print(this.taskDetailModel.Tasks!.StatusName);
+        notifyListeners();
       } else {
         if (!isEmpty(result.errorMessage)) {
           content = result.errorMessage.toString();

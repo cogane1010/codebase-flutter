@@ -99,7 +99,7 @@ class _DetailProjectScreenState extends State<DetailProjectScreen> {
                           ),
                           Text(
                             !isEmpty(vm.projectDetailModel)
-                                ? vm.projectDetailModel!.Project!.Type
+                                ? vm.projectDetailModel!.Project!.ProjectType
                                     .toString()
                                 : "",
                             style: textStyleContent,
@@ -325,21 +325,23 @@ class _DetailProjectScreenState extends State<DetailProjectScreen> {
                               )
                             ],
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    child: buildContinueButton(context, vm),
-                                  )),
-                              Expanded(flex: 1, child: Container()),
-                              Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    child: buildCancelButton(context, vm),
-                                  ))
-                            ],
-                          )
+                          Visibility(
+                              visible: vm.isShowButton,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                      flex: 4,
+                                      child: Container(
+                                        child: buildContinueButton(context, vm),
+                                      )),
+                                  Expanded(flex: 1, child: Container()),
+                                  Expanded(
+                                      flex: 4,
+                                      child: Container(
+                                        child: buildCancelButton(context, vm),
+                                      ))
+                                ],
+                              ))
                         ],
                       )));
             },

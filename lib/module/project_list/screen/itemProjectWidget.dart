@@ -38,17 +38,17 @@ class _ItemProjectWidgetState extends State<ItemProjectWidget> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Column(
+              Expanded(
+                  child: Column(
                 children: [
                   Container(
-                    width: 290,
                     height: 40,
                     decoration: BoxDecoration(
                         border:
                             Border.all(color: widget.viewModel.headerBorder),
                         color: AppColors.whiteColor),
                     padding: const EdgeInsets.only(
-                        top: Dimens.size5,
+                        top: Dimens.size8,
                         bottom: Dimens.size5,
                         left: Dimens.size10,
                         right: Dimens.size10),
@@ -67,8 +67,7 @@ class _ItemProjectWidgetState extends State<ItemProjectWidget> {
                     )),
                   ),
                   Container(
-                    width: 290,
-                    height: 80,
+                    height: 70,
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         color: AppColors.whiteColor),
@@ -142,7 +141,7 @@ class _ItemProjectWidgetState extends State<ItemProjectWidget> {
                     )),
                   )
                 ],
-              )
+              ))
             ],
           ),
         ),

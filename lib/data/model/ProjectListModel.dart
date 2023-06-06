@@ -50,8 +50,8 @@ class ProjectInfo {
 
   ProjectInfo.fromJson(dynamic json) {
     C_Project_Id = json['C_Project_Id'];
-    Code = json['Code'];
-    Name = json['Name'];
+    Code = !isEmpty(json['Code']) ? json['Code'] : json['ProjectCode'];
+    Name = !isEmpty(json['Name']) ? json['Name'] : json['ProjectName'];
     ProjectType = json['ProjectType'];
     C_Approval_Request_Id = json['C_Approval_Request_Id'];
     RequestType = json['RequestType'];
@@ -150,10 +150,14 @@ class TaskInfo {
         : "";
     C_Task_Id = !isEmpty(json['C_Task_Id']) ? json['C_Task_Id'] : "";
     C_Project_Id = !isEmpty(json['C_Project_Id']) ? json['C_Project_Id'] : "";
-    Code_Project = !isEmpty(json['Code_Project']) ? json['Code_Project'] : "";
-    Name_Project = !isEmpty(json['Name_Project']) ? json['Name_Project'] : "";
-    Code = !isEmpty(json['Code']) ? json['Code'] : "";
-    Name = !isEmpty(json['Name']) ? json['Name'] : "";
+    Code_Project = !isEmpty(json['Code_Project'])
+        ? json['Code_Project']
+        : json['ProjectCode'];
+    Name_Project = !isEmpty(json['Name_Project'])
+        ? json['Name_Project']
+        : json['ProjectName'];
+    Code = !isEmpty(json['Code']) ? json['Code'] : json['TaskCode'];
+    Name = !isEmpty(json['Name']) ? json['Name'] : json['TaskName'];
     StartDate =
         !isEmpty(json['StartDate']) ? DateTime.parse(json['StartDate']) : null;
     Deadline =

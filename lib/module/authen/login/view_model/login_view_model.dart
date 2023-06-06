@@ -47,7 +47,7 @@ class LoginViewModel extends ChangeNotifier {
   void initViewModel() async {
     emailController = new TextEditingController();
     passwordController = new TextEditingController();
-    emailController.text = "minh.tc";
+    emailController.text = "admin";
     passwordController.text = "Brg123456";
     isShowLoading = false;
     faceIDBiometric = false;

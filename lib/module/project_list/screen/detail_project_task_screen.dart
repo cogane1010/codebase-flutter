@@ -326,21 +326,23 @@ class _DetailProjectTaskScreenState extends State<DetailProjectTasikScreen> {
                               )
                             ],
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    child: buildContinueButton(context, vm),
-                                  )),
-                              Expanded(flex: 1, child: Container()),
-                              Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    child: buildCancelButton(context, vm),
-                                  ))
-                            ],
-                          )
+                          Visibility(
+                              visible: vm.isShowButton,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                      flex: 4,
+                                      child: Container(
+                                        child: buildContinueButton(context, vm),
+                                      )),
+                                  Expanded(flex: 1, child: Container()),
+                                  Expanded(
+                                      flex: 4,
+                                      child: Container(
+                                        child: buildCancelButton(context, vm),
+                                      ))
+                                ],
+                              ))
                         ],
                       )));
             },

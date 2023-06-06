@@ -49,12 +49,12 @@ class _ItemTaskWidgetState extends State<ItemTaskWidget> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Column(
+              Expanded(
+                  child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 290,
                     height: 40,
                     decoration: BoxDecoration(
                         border:
@@ -80,7 +80,6 @@ class _ItemTaskWidgetState extends State<ItemTaskWidget> {
                     )),
                   ),
                   Container(
-                    width: 290,
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         color: AppColors.whiteColor),
@@ -125,7 +124,7 @@ class _ItemTaskWidgetState extends State<ItemTaskWidget> {
                                 Expanded(
                                     flex: 6,
                                     child: Text(
-                                      '${widget.taskInfo?.RequestType}',
+                                      '${widget.taskInfo?.RequestTypeName}',
                                       style: textStyleTinyContent,
                                     ))
                               ],
@@ -172,7 +171,7 @@ class _ItemTaskWidgetState extends State<ItemTaskWidget> {
                     )),
                   )
                 ],
-              )
+              ))
             ],
           ),
         ),
