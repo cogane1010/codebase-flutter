@@ -115,49 +115,47 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                             ),
                                           ),
                                           Container(
-                                            width: double.infinity,
-                                            height: 50,
-                                            decoration: BoxDecoration(),
-                                            child: Row(
-                                              children: [
-                                                TextButton(
-                                                    style: TextButton.styleFrom(
-                                                        fixedSize: const Size(
-                                                            260, 50)),
-                                                    onPressed: () {
-                                                      if (int.parse(vm
-                                                              .projectPending!
-                                                              .amount
-                                                              .toString()) >
-                                                          0) {
-                                                        ScreenUtils
-                                                            .openScreenWithData(
-                                                                context,
-                                                                AppRouter
-                                                                    .projectListWidget,
-                                                                {
-                                                              "moduleName": vm
-                                                                  .projectPending!
-                                                                  .moduleName
-                                                                  .toString(),
-                                                              "toDoListType":
-                                                                  "ProjectPending"
-                                                            });
-                                                      }
-                                                    },
-                                                    child: Center(
-                                                        child: Text(
-                                                      !isEmpty(
-                                                              vm.projectPending)
-                                                          ? vm.projectPending!
-                                                              .amount
-                                                              .toString()
-                                                          : "",
-                                                      style: textStyleBoldTitle,
-                                                    )))
-                                              ],
-                                            ),
-                                          )
+                                              width: double.infinity,
+                                              height: 50,
+                                              decoration: BoxDecoration(),
+                                              child: Center(
+                                                  child: Column(
+                                                children: [
+                                                  TextButton(
+                                                      onPressed: () {
+                                                        if (int.parse(vm
+                                                                .projectPending!
+                                                                .amount
+                                                                .toString()) >
+                                                            0) {
+                                                          ScreenUtils
+                                                              .openScreenWithData(
+                                                                  context,
+                                                                  AppRouter
+                                                                      .projectListWidget,
+                                                                  {
+                                                                "moduleName": vm
+                                                                    .projectPending!
+                                                                    .moduleName
+                                                                    .toString(),
+                                                                "toDoListType":
+                                                                    "ProjectPending"
+                                                              });
+                                                        }
+                                                      },
+                                                      child: Center(
+                                                          child: Text(
+                                                        !isEmpty(vm
+                                                                .projectPending)
+                                                            ? vm.projectPending!
+                                                                .amount
+                                                                .toString()
+                                                            : "",
+                                                        style:
+                                                            textStyleBoldTitle,
+                                                      )))
+                                                ],
+                                              )))
                                         ],
                                       ),
                                     ),
@@ -168,114 +166,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
                           ),
                         ),
                       ),
-                      // UiHelper.verticalBox32,
-                      // Container(
-                      //   width: double.infinity,
-                      //   margin: EdgeInsets.symmetric(horizontal: Dimens.size20),
-                      //   child: BaseBackground(
-                      //     borderWidth: Dimens.size0,
-                      //     topLeftRadius: Radius.circular(Dimens.size5),
-                      //     topRightRadius: Radius.circular(Dimens.size5),
-                      //     bottomLeftRadius: Radius.circular(Dimens.size5),
-                      //     bottomRightRadius: Radius.circular(Dimens.size5),
-                      //     borderColor: AppColors.whiteColor,
-                      //     elevation: 10,
-                      //     child: Column(
-                      //       crossAxisAlignment: CrossAxisAlignment.start,
-                      //       children: [
-                      //         Padding(
-                      //           padding: const EdgeInsets.all(Dimens.size0),
-                      //           child: Row(
-                      //             crossAxisAlignment: CrossAxisAlignment.start,
-                      //             children: [
-                      //               Expanded(
-                      //                 child: Column(
-                      //                   mainAxisAlignment:
-                      //                       MainAxisAlignment.start,
-                      //                   crossAxisAlignment:
-                      //                       CrossAxisAlignment.start,
-                      //                   children: [
-                      //                     Container(
-                      //                       width: double.infinity,
-                      //                       height: 30,
-                      //                       decoration: BoxDecoration(
-                      //                           border: Border.all(
-                      //                               color: vm
-                      //                                   .taskProcessingheaderBorder,
-                      //                               width: 2),
-                      //                           borderRadius: BorderRadius.only(
-                      //                               topLeft: Radius.circular(
-                      //                                   Dimens.size8),
-                      //                               topRight: Radius.circular(
-                      //                                   Dimens.size8))),
-                      //                       child: Column(
-                      //                         children: [
-                      //                           Align(
-                      //                               child: Text(
-                      //                             !isEmpty(vm.taskProcessing)
-                      //                                 ? vm.taskProcessing!
-                      //                                     .tittle
-                      //                                     .toString()
-                      //                                 : "",
-                      //                             style: textStyleBoldTitle,
-                      //                           ))
-                      //                         ],
-                      //                       ),
-                      //                     ),
-                      //                     Container(
-                      //                       width: double.infinity,
-                      //                       height: 50,
-                      //                       decoration: BoxDecoration(),
-                      //                       child: Row(
-                      //                         children: [
-                      //                           TextButton(
-                      //                               style: TextButton.styleFrom(
-                      //                                   fixedSize: const Size(
-                      //                                       260, 50)),
-                      //                               onPressed: () {
-                      //                                 // if (int.parse(vm
-                      //                                 //         .taskProcessing!
-                      //                                 //         .amount
-                      //                                 //         .toString()) >
-                      //                                 //     0) {
-                      //                                 //   ScreenUtils
-                      //                                 //       .openScreenWithData(
-                      //                                 //           context,
-                      //                                 //           AppRouter
-                      //                                 //               .projectListWidget,
-                      //                                 //           {
-                      //                                 //         "moduleName": vm
-                      //                                 //             .taskProcessing!
-                      //                                 //             .moduleName
-                      //                                 //             .toString(),
-                      //                                 //         "toDoListType":
-                      //                                 //             "ListTaskProcessing"
-                      //                                 //       });
-                      //                                 // }
-                      //                               },
-                      //                               child: Center(
-                      //                                   child: Text(
-                      //                                 !isEmpty(
-                      //                                         vm.taskProcessing)
-                      //                                     ? vm.taskProcessing!
-                      //                                         .amount
-                      //                                         .toString()
-                      //                                     : "",
-                      //                                 style: textStyleBoldTitle,
-                      //                               )))
-                      //                         ],
-                      //                       ),
-                      //                     )
-                      //                   ],
-                      //                 ),
-                      //               ),
-                      //             ],
-                      //           ),
-                      //         )
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
                       UiHelper.verticalBox32,
                       Container(
                         width: double.infinity,
@@ -333,49 +223,48 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                             ),
                                           ),
                                           Container(
-                                            width: double.infinity,
-                                            height: 50,
-                                            decoration: BoxDecoration(),
-                                            child: Row(
-                                              children: [
-                                                TextButton(
-                                                    style: TextButton.styleFrom(
-                                                        fixedSize: const Size(
-                                                            260, 50)),
-                                                    onPressed: () {
-                                                      if (int.parse(vm
-                                                              .taskProcessingApproval!
-                                                              .amount
-                                                              .toString()) >
-                                                          0) {
-                                                        ScreenUtils
-                                                            .openScreenWithData(
-                                                                context,
-                                                                AppRouter
-                                                                    .taskListWidget,
-                                                                {
-                                                              "moduleName": vm
+                                              width: double.infinity,
+                                              height: 50,
+                                              decoration: BoxDecoration(),
+                                              child: Center(
+                                                child: Column(
+                                                  children: [
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          if (int.parse(vm
                                                                   .taskProcessingApproval!
-                                                                  .moduleName
-                                                                  .toString(),
-                                                              "toDoListType":
-                                                                  "ListProcessingApproval"
-                                                            });
-                                                      }
-                                                    },
-                                                    child: Center(
-                                                        child: Text(
-                                                      !isEmpty(vm
-                                                              .taskProcessingApproval)
-                                                          ? vm.taskProcessingApproval!
-                                                              .amount
-                                                              .toString()
-                                                          : "",
-                                                      style: textStyleBoldTitle,
-                                                    )))
-                                              ],
-                                            ),
-                                          )
+                                                                  .amount
+                                                                  .toString()) >
+                                                              0) {
+                                                            ScreenUtils
+                                                                .openScreenWithData(
+                                                                    context,
+                                                                    AppRouter
+                                                                        .taskListWidget,
+                                                                    {
+                                                                  "moduleName": vm
+                                                                      .taskProcessingApproval!
+                                                                      .moduleName
+                                                                      .toString(),
+                                                                  "toDoListType":
+                                                                      "ListProcessingApproval"
+                                                                });
+                                                          }
+                                                        },
+                                                        child: Center(
+                                                            child: Text(
+                                                          !isEmpty(vm
+                                                                  .taskProcessingApproval)
+                                                              ? vm.taskProcessingApproval!
+                                                                  .amount
+                                                                  .toString()
+                                                              : "",
+                                                          style:
+                                                              textStyleBoldTitle,
+                                                        )))
+                                                  ],
+                                                ),
+                                              )),
                                         ],
                                       ),
                                     ),
@@ -446,44 +335,44 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                             width: double.infinity,
                                             height: 50,
                                             decoration: BoxDecoration(),
-                                            child: Row(
-                                              children: [
-                                                TextButton(
-                                                    style: TextButton.styleFrom(
-                                                        fixedSize: const Size(
-                                                            260, 50)),
-                                                    onPressed: () {
-                                                      if (int.parse(vm
-                                                              .taskProgressApproval!
-                                                              .amount
-                                                              .toString()) >
-                                                          0) {
-                                                        ScreenUtils
-                                                            .openScreenWithData(
-                                                                context,
-                                                                AppRouter
-                                                                    .taskListWidget,
-                                                                {
-                                                              "moduleName": vm
-                                                                  .taskProgressApproval!
-                                                                  .moduleName
-                                                                  .toString(),
-                                                              "toDoListType":
-                                                                  "ListProgressApproval"
-                                                            });
-                                                      }
-                                                    },
-                                                    child: Center(
-                                                        child: Text(
-                                                      !isEmpty(vm
-                                                              .taskProgressApproval)
-                                                          ? vm.taskProgressApproval!
-                                                              .amount
-                                                              .toString()
-                                                          : "",
-                                                      style: textStyleBoldTitle,
-                                                    )))
-                                              ],
+                                            child: Center(
+                                              child: Column(
+                                                children: [
+                                                  TextButton(
+                                                      onPressed: () {
+                                                        if (int.parse(vm
+                                                                .taskProgressApproval!
+                                                                .amount
+                                                                .toString()) >
+                                                            0) {
+                                                          ScreenUtils
+                                                              .openScreenWithData(
+                                                                  context,
+                                                                  AppRouter
+                                                                      .taskListWidget,
+                                                                  {
+                                                                "moduleName": vm
+                                                                    .taskProgressApproval!
+                                                                    .moduleName
+                                                                    .toString(),
+                                                                "toDoListType":
+                                                                    "ListProgressApproval"
+                                                              });
+                                                        }
+                                                      },
+                                                      child: Center(
+                                                          child: Text(
+                                                        !isEmpty(vm
+                                                                .taskProgressApproval)
+                                                            ? vm.taskProgressApproval!
+                                                                .amount
+                                                                .toString()
+                                                            : "",
+                                                        style:
+                                                            textStyleBoldTitle,
+                                                      )))
+                                                ],
+                                              ),
                                             ),
                                           )
                                         ],
