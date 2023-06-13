@@ -1,14 +1,13 @@
-import 'package:brg_management/core/helpers/helpers.dart';
 import 'package:brg_management/core/utils/isEmpty.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../../common/widget/base_background.dart';
 import '../../../configs/app_localizations.dart';
-import '../../../core/utils/theme_util.dart';
+import '../../../core/utils/app_color.dart';
+import '../../../data/model/ProjectListModel.dart';
 import '../../../resources/asset_image.dart';
 import '../../../resources/color.dart';
-import '../../../resources/dimens.dart';
 import '../view_model/project_list_vm.dart';
 import 'itemProjectWidget.dart';
 
@@ -24,6 +23,9 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
   var isMenu = false;
   var toDoListType = '';
   var bartitle = false;
+  int? selectedIndex;
+  int? selectedStatus;
+  List<StatusModel> statusList = [];
 
   @override
   void initState() {
@@ -41,6 +43,8 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
             ModuleName: data["moduleName"],
             ToDoListType: data["toDoListType"],
             IsMenu: data["isMenu"]);
+        this.statusList = viewModel.statuses;
+        super.setState(() {});
       }
     });
     super.initState();
@@ -54,94 +58,78 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.appBarColor,
-        title: Text("Dự án chờ duyệt"),
-      ),
-      body: Consumer<ProjectListViewModel>(
-        builder: (context, vm, child) {
-          return Consumer<ProjectListViewModel>(
-            builder: (context, vm, child) {
-              return SingleChildScrollView(
-                  child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(bg_login), fit: BoxFit.fill),
+        appBar: AppBar(
+            centerTitle: true,
+            backgroundColor: AppColors.appBarColor,
+            title: Text("Dự án chờ duyệt"),
+            actions: [
+              Visibility(
+                visible: isMenu,
+                child: PopupMenuButton<StatusModel>(
+                  onSelected: (c) {
+                    viewModel.eventChangeStatus(c.ValueStatus.toString());
+                  },
+                  itemBuilder: (BuildContext context) {
+                    return this.statusList.map((StatusModel choice) {
+                      var index = this.statusList.indexOf(choice);
+                      return PopupMenuItem<StatusModel>(
+                        value: choice,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(AppLocalizations.of(context)!
+                                .translate(choice.NameStatus!.toLowerCase())),
+                            selectedIndex == index
+                                ? Icon(
+                                    Icons.done,
+                                    color: AppColor.redMax,
+                                  )
+                                : SizedBox(),
+                          ],
+                        ),
+                      );
+                    }).toList();
+                  },
                 ),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Visibility(
-                          visible: isMenu,
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: buildStatusWidget(context, vm),
-                          )),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: SizedBox(
-                              height: 600.0,
-                              width: double.infinity,
-                              child: ListView.builder(
-                                itemBuilder: (ctx, index) {
-                                  return ItemProjectWidget(
-                                      true, vm.projectInfos[index], vm);
-                                },
-                                itemCount: vm.projectInfos.length,
+              )
+            ]),
+        body: Consumer<ProjectListViewModel>(
+          builder: (context, vm, child) {
+            return Consumer<ProjectListViewModel>(
+              builder: (context, vm, child) {
+                return SingleChildScrollView(
+                    child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(bg_login), fit: BoxFit.fill),
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: 600.0,
+                                width: double.infinity,
+                                child: ListView.builder(
+                                  itemBuilder: (ctx, index) {
+                                    return ItemProjectWidget(
+                                        true, vm.projectInfos[index], vm);
+                                  },
+                                  itemCount: vm.projectInfos.length,
+                                ),
                               ),
-                            ),
-                          )
-                        ],
-                      )
-                    ]),
-              ));
-            },
-          );
-        },
-      ),
-    );
-  }
-
-  buildStatusWidget(BuildContext context, ProjectListViewModel vm) {
-    //String dropdownValue = vm.statuses.first.ValueStatus!;
-    return BaseBackground(
-      width: Dimens.size180,
-      height: Dimens.size40,
-      borderColor: Colors.grey,
-      backgroundColor: Colors.white,
-      child: DropdownButtonHideUnderline(
-        child: ButtonTheme(
-          alignedDropdown: true,
-          child: DropdownButton<String>(
-            value: vm.selectedStatus,
-            isExpanded: true,
-            icon: Icon(Icons.keyboard_arrow_down),
-            style: textStyleSmallContent,
-            onChanged: (String? newValue) {
-              print("status combobox:" + newValue.toString());
-              setState(() {
-                vm.selectedStatus = newValue!;
-                print("selectedStatus " + vm.selectedStatus!);
-              });
-              vm.eventChangeStatus(newValue.toString());
-            },
-            items: vm.statuses
-                .map<DropdownMenuItem<String>>(
-                    (value) => DropdownMenuItem<String>(
-                          value: value.ValueStatus,
-                          child: Text(
-                            AppLocalizations.of(context)!
-                                .translate(value.NameStatus!.toLowerCase()),
-                          ),
-                        ))
-                .toList(),
-          ),
-        ),
-      ),
-    );
+                            )
+                          ],
+                        )
+                      ]),
+                ));
+              },
+            );
+          },
+        ));
   }
 }

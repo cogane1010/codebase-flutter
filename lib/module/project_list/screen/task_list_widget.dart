@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../common/widget/base_background.dart';
 import '../../../configs/app_localizations.dart';
-import '../../../core/helpers/ui_helper.dart';
+import '../../../core/utils/app_color.dart';
 import '../../../core/utils/isEmpty.dart';
 import '../../../core/utils/theme_util.dart';
 import '../../../data/model/ProjectListModel.dart';
@@ -25,6 +25,9 @@ class _TaskListWidgetState extends State<TaskListWidget> {
   var isMenu = false;
   var toDoListType = '';
   var bartitle = false;
+  int? selectedIndex;
+  int? selectedStatus;
+  List<StatusModel> statusList = [];
 
   @override
   void initState() {
@@ -52,6 +55,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
             ModuleName: data["moduleName"],
             ToDoListType: data["toDoListType"],
             IsMenu: data["isMenu"]);
+        super.setState(() {});
       }
     });
     super.initState();
@@ -66,13 +70,43 @@ class _TaskListWidgetState extends State<TaskListWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.appBarColor,
-        title: Text(this.bartitle
-            ? AppLocalizations.of(context)!.translate('danh_sach_hoan_thanh')
-            : AppLocalizations.of(context)!
-                .translate('danh_sach_cong_viec_phat_sinh')),
-      ),
+          centerTitle: true,
+          backgroundColor: AppColors.appBarColor,
+          title: Text(this.bartitle
+              ? AppLocalizations.of(context)!.translate('danh_sach_hoan_thanh')
+              : AppLocalizations.of(context)!
+                  .translate('danh_sach_cong_viec_phat_sinh')),
+          actions: [
+            Visibility(
+              visible: isMenu,
+              child: PopupMenuButton<StatusModel>(
+                onSelected: (c) {
+                  viewModel.eventChangeStatus(c.ValueStatus.toString());
+                },
+                itemBuilder: (BuildContext context) {
+                  return this.statusList.map((StatusModel choice) {
+                    var index = this.statusList.indexOf(choice);
+                    return PopupMenuItem<StatusModel>(
+                      value: choice,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(AppLocalizations.of(context)!
+                              .translate(choice.NameStatus!.toLowerCase())),
+                          selectedIndex == index
+                              ? Icon(
+                                  Icons.done,
+                                  color: AppColor.redMax,
+                                )
+                              : SizedBox(),
+                        ],
+                      ),
+                    );
+                  }).toList();
+                },
+              ),
+            )
+          ]),
       body: Consumer<TaskListViewModel>(
         builder: (context, vm, child) {
           return Consumer<TaskListViewModel>(
@@ -88,12 +122,6 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Visibility(
-                          visible: isMenu,
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: buildStatusWidget(context, vm),
-                          )),
                       Row(
                         children: [
                           Expanded(
@@ -120,45 +148,6 @@ class _TaskListWidgetState extends State<TaskListWidget> {
             },
           );
         },
-      ),
-    );
-  }
-
-  buildStatusWidget(BuildContext context, TaskListViewModel vm) {
-    //String dropdownValue = vm.statuses.first.ValueStatus!;
-    return BaseBackground(
-      width: Dimens.size180,
-      height: Dimens.size40,
-      borderColor: Colors.grey,
-      backgroundColor: Colors.white,
-      child: DropdownButtonHideUnderline(
-        child: ButtonTheme(
-          alignedDropdown: true,
-          child: DropdownButton<String>(
-            value: vm.selectedStatus,
-            isExpanded: true,
-            icon: Icon(Icons.keyboard_arrow_down),
-            style: textStyleSmallContent,
-            onChanged: (String? newValue) {
-              print("status combobox:" + newValue.toString());
-              setState(() {
-                vm.selectedStatus = newValue!;
-                print("selectedStatus " + vm.selectedStatus!);
-              });
-              vm.eventChangeStatus(newValue.toString());
-            },
-            items: vm.statuses
-                .map<DropdownMenuItem<String>>(
-                    (value) => DropdownMenuItem<String>(
-                          value: value.ValueStatus,
-                          child: Text(
-                            AppLocalizations.of(context)!
-                                .translate(value.NameStatus!.toLowerCase()),
-                          ),
-                        ))
-                .toList(),
-          ),
-        ),
       ),
     );
   }

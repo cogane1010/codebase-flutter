@@ -9,8 +9,6 @@ import '../../../configs/router.dart';
 import '../../../core/utils/screen_util.dart';
 import '../../../core/utils/theme_util.dart';
 import '../../../resources/asset_image.dart';
-import '../../page/favourites_page.dart';
-import '../../page/people_page.dart';
 import '../ViewModel/todolist_vm.dart';
 
 class TodoListScreen extends StatefulWidget {
@@ -395,38 +393,5 @@ class _TodoListScreenState extends State<TodoListScreen> {
         },
       ),
     );
-  }
-
-  Widget buildBottomMenuItem({
-    required String text,
-    IconData? icon,
-    VoidCallback? onClicked,
-  }) {
-    final color = Colors.white;
-    final hoverColor = Colors.white70;
-
-    return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(text, style: TextStyle(color: color)),
-      hoverColor: hoverColor,
-      onTap: onClicked,
-    );
-  }
-
-  void selectedItem(BuildContext context, int index) {
-    Navigator.of(context).pop();
-
-    switch (index) {
-      case 0:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PeoplePage(),
-        ));
-        break;
-      case 1:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => FavouritesPage(),
-        ));
-        break;
-    }
   }
 }

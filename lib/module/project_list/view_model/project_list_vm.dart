@@ -33,6 +33,8 @@ class ProjectListViewModel extends ChangeNotifier {
 
   bool isMenu = false;
   bool isShowButton = true;
+  int pageIndex = 1;
+  int pageSize = 12;
 
   void initViewModel({String? ModuleName, String? ToDoListType, bool? IsMenu}) {
     this.selectedStatus = '-1';
@@ -79,7 +81,7 @@ class ProjectListViewModel extends ChangeNotifier {
   void eventChangeStatus(String seStatus) async {
     this.selectedStatus = '-1';
     this.isMenu = true;
-    if (seStatus != '-1') {
+    if (!isEmpty(seStatus)) {
       this.selectedStatus = seStatus;
       getProjectAndTaskList();
     } else {
@@ -111,8 +113,6 @@ class ProjectListViewModel extends ChangeNotifier {
             if (!isEmpty(result) & !isEmpty(result.Data)) {
               projectInfos = result.Data!;
             }
-            //projectInfos = projectResponse!.data;
-            print(projectResponse);
             notifyListeners();
           } else {
             showAlertDialog(
@@ -150,7 +150,6 @@ class ProjectListViewModel extends ChangeNotifier {
                 defaultActionText: "Đóng");
           }
         }
-
         EasyLoading.dismiss();
       } else {
         EasyLoading.dismiss();
@@ -220,7 +219,6 @@ class ProjectListViewModel extends ChangeNotifier {
           this.projectDetailModel!.Project!.StatusName = "Đã trả lại";
         }
         this.isShowButton = false;
-        print(this.projectDetailModel!.Project!.StatusName);
         notifyListeners();
       } else {
         if (!isEmpty(result.errorMessage)) {

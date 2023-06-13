@@ -36,6 +36,12 @@ class TodoListViewModel extends ChangeNotifier {
     if (!isEmpty(moduleName)) {
       this.moduleName = moduleName;
       getTodoListData();
+    } else {
+      this.projectPending = new TodoModel();
+      this.taskProcessing = new TodoModel();
+      this.taskProcessingApproval = new TodoModel();
+      this.taskProgressApproval = new TodoModel();
+      notifyListeners();
     }
   }
 
