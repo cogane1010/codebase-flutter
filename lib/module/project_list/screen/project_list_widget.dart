@@ -6,7 +6,6 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../configs/app_localizations.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../data/model/ProjectListModel.dart';
-import '../../../resources/asset_image.dart';
 import '../../../resources/color.dart';
 import '../view_model/project_list_vm.dart';
 import 'itemProjectWidget.dart';
@@ -26,6 +25,9 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
   int? selectedIndex;
   int? selectedStatus;
   List<StatusModel> statusList = [];
+  List<String> items = ["1", "2", "3", "4", "5", "6", "7", "8"];
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   @override
   void initState() {
@@ -44,7 +46,8 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
             ToDoListType: data["toDoListType"],
             IsMenu: data["isMenu"]);
         this.statusList = viewModel.statuses;
-        super.setState(() {});
+        if (mounted) setState(() {});
+        _refreshController.requestRefresh();
       }
     });
     super.initState();
@@ -54,6 +57,22 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
   void dispose() {
     viewModel.clear();
     super.dispose();
+  }
+
+  void _onRefresh() async {
+    if (mounted)
+      setState(() {
+        viewModel.eventChangeStatus('');
+      });
+    _refreshController.refreshCompleted();
+  }
+
+  void _onLoading() async {
+    if (mounted)
+      setState(() {
+        viewModel.eventChangeStatus('');
+      });
+    _refreshController.loadComplete();
   }
 
   Widget build(BuildContext context) {
@@ -68,6 +87,8 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
                 child: PopupMenuButton<StatusModel>(
                   onSelected: (c) {
                     viewModel.eventChangeStatus(c.ValueStatus.toString());
+                    setState(() {});
+                    _refreshController.requestRefresh();
                   },
                   itemBuilder: (BuildContext context) {
                     return this.statusList.map((StatusModel choice) {
@@ -93,43 +114,43 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
                 ),
               )
             ]),
-        body: Consumer<ProjectListViewModel>(
-          builder: (context, vm, child) {
-            return Consumer<ProjectListViewModel>(
-              builder: (context, vm, child) {
-                return SingleChildScrollView(
-                    child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(bg_login), fit: BoxFit.fill),
-                  ),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: SizedBox(
-                                height: 600.0,
-                                width: double.infinity,
-                                child: ListView.builder(
-                                  itemBuilder: (ctx, index) {
-                                    return ItemProjectWidget(
-                                        true, vm.projectInfos[index], vm);
-                                  },
-                                  itemCount: vm.projectInfos.length,
-                                ),
-                              ),
-                            )
-                          ],
-                        )
-                      ]),
-                ));
-              },
-            );
-          },
-        ));
+        body: SmartRefresher(
+          enablePullDown: true,
+          enablePullUp: true,
+          header: WaterDropHeader(),
+          controller: _refreshController,
+          onRefresh: _onRefresh,
+          onLoading: _onLoading,
+          child: ListView.builder(
+            itemBuilder: (ctx, index) {
+              return ItemProjectWidget(
+                  true, viewModel.projectInfos[index], viewModel);
+            },
+            itemCount: isEmpty(viewModel) ? 0 : viewModel.projectInfos.length,
+          ),
+        )
+        // body: Consumer<ProjectListViewModel>(
+        //   builder: (context, vm, child) {
+        //     return SingleChildScrollView(
+        //         child: Row(
+        //       children: [
+        //         Expanded(
+        //           child: SizedBox(
+        //             height: 600.0,
+        //             width: double.infinity,
+        //             child: ListView.builder(
+        //               itemBuilder: (ctx, index) {
+        //                 return ItemProjectWidget(
+        //                     true, vm.projectInfos[index], vm);
+        //               },
+        //               itemCount: vm.projectInfos.length,
+        //             ),
+        //           ),
+        //         )
+        //       ],
+        //     ));
+        //   },
+        // )
+        );
   }
 }

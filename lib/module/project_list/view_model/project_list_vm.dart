@@ -79,9 +79,7 @@ class ProjectListViewModel extends ChangeNotifier {
   void initListener() {}
 
   void eventChangeStatus(String seStatus) async {
-    this.selectedStatus = '-1';
-    this.isMenu = true;
-    if (!isEmpty(seStatus)) {
+    if (!isEmpty(seStatus) || this.selectedStatus != '-1') {
       this.selectedStatus = seStatus;
       getProjectAndTaskList();
     } else {
@@ -93,7 +91,6 @@ class ProjectListViewModel extends ChangeNotifier {
 
   void getProjectAndTaskList() async {
     EasyLoading.show();
-
     if (this.isMenu) {
       ApiResponse json = await projectListApi.getProjectAndTaskListMenu(
           this.toDoListType,
@@ -181,8 +178,6 @@ class ProjectListViewModel extends ChangeNotifier {
             stt = stt + 1;
           });
         }
-
-        print(projectResponse);
         notifyListeners();
       }
       EasyLoading.dismiss();

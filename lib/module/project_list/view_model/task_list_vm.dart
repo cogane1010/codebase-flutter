@@ -79,9 +79,7 @@ class TaskListViewModel extends ChangeNotifier {
   void initListener() {}
 
   void eventChangeStatus(String seStatus) async {
-    this.selectedStatus = '-1';
-    this.isMenu = true;
-    if (seStatus != '-1') {
+    if (!isEmpty(seStatus) || this.selectedStatus != '-1') {
       this.selectedStatus = seStatus;
       getListProcessingApproval();
     } else {
@@ -105,14 +103,11 @@ class TaskListViewModel extends ChangeNotifier {
                   ? TaskProgressRequestModel.fromJson(
                       json.responseObject['Data'])
                   : TaskProgressRequestModel());
-
           if (taskResponse!.isSuccess!) {
             TaskProgressRequestModel result = taskResponse!.data;
             if (!isEmpty(result) & !isEmpty(result.Data)) {
               taskInfos = result.Data!;
             }
-
-            print(taskInfos);
             notifyListeners();
           }
         }
@@ -140,7 +135,6 @@ class TaskListViewModel extends ChangeNotifier {
             notifyListeners();
           }
         }
-
         EasyLoading.dismiss();
       } else {
         EasyLoading.dismiss();
@@ -191,7 +185,6 @@ class TaskListViewModel extends ChangeNotifier {
 
       if (taskDetailResponse!.isSuccess!) {
         projectDetailModel = taskDetailResponse!.data;
-
         if (!isEmpty(projectDetailModel!.Tasks)) {
           var stt = 1;
           projectDetailModel!.Tasks?.forEach((e) {
@@ -199,7 +192,6 @@ class TaskListViewModel extends ChangeNotifier {
             stt = stt + 1;
           });
         }
-
         notifyListeners();
       }
       EasyLoading.dismiss();
@@ -247,7 +239,6 @@ class TaskListViewModel extends ChangeNotifier {
           context: NavigationService.navigatorKey.currentContext!,
           defaultActionText: "Đóng");
       notifyListeners();
-
       EasyLoading.dismiss();
     } else {
       EasyLoading.dismiss();

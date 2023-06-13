@@ -147,7 +147,7 @@ class TaskInfo {
     STT = isEmpty(json['STT']) ? json['STT'] : "";
     IsRequestApprovalTask = isEmpty(json['IsRequestApprovalTask'])
         ? json['IsRequestApprovalTask']
-        : "";
+        : null;
     C_Task_Id = !isEmpty(json['C_Task_Id']) ? json['C_Task_Id'] : "";
     C_Project_Id = !isEmpty(json['C_Project_Id']) ? json['C_Project_Id'] : "";
     Code_Project = !isEmpty(json['Code_Project'])
