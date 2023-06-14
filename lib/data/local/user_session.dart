@@ -8,6 +8,7 @@ class UserSession {
   String orgName = '';
   String email = '';
   String userName = '';
+  String selectedModule = '';
 
   factory UserSession() {
     return _singleton;

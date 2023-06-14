@@ -7,6 +7,7 @@ import '../../../common/widget/base_background.dart';
 import '../../../configs/router.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/screen_util.dart';
+import '../../../data/local/user_session.dart';
 import '../../../resources/asset_image.dart';
 import '../../page/favourites_page.dart';
 import '../../page/people_page.dart';
@@ -108,6 +109,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     .moduleData
                                                                     .length >
                                                                 0) {
+                                                              UserSession
+                                                                      .instance
+                                                                      .selectedModule =
+                                                                  vm
+                                                                      .homeData!
+                                                                      .moduleData[
+                                                                          0]
+                                                                      .moduleName
+                                                                      .toString();
                                                               ScreenUtils
                                                                   .openScreenWithData(
                                                                       context,
@@ -227,6 +237,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                         .moduleData
                                                                         .length >
                                                                     1) {
+                                                                  UserSession.instance.selectedModule = vm
+                                                                      .homeData!
+                                                                      .moduleData[
+                                                                          1]
+                                                                      .moduleName
+                                                                      .toString();
                                                                   ScreenUtils.openScreenWithData(
                                                                       context,
                                                                       AppRouter
@@ -342,6 +358,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                         .moduleData
                                                                         .length >
                                                                     2) {
+                                                                  UserSession.instance.selectedModule = vm
+                                                                      .homeData!
+                                                                      .moduleData[
+                                                                          2]
+                                                                      .moduleName
+                                                                      .toString();
                                                                   ScreenUtils.openScreenWithData(
                                                                       context,
                                                                       AppRouter

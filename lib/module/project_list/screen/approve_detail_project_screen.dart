@@ -275,9 +275,9 @@ class _ApproveDetailProjectScreenState
                                       ),
                                       Text(
                                         !isEmpty(vm.taskDetailModel.Tasks
-                                                ?.AcceptStatusText)
+                                                ?.StatusName)
                                             ? vm.taskDetailModel.Tasks!
-                                                .AcceptStatusText
+                                                .StatusName
                                                 .toString()
                                             : "",
                                         style: textStyleContent,

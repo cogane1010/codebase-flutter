@@ -148,26 +148,28 @@ class NavigationDrawerWidget extends StatelessWidget {
 
     switch (index) {
       case 0:
-        ScreenUtils.openScreenWithData(context, AppRouter.todoList,
-            {'moduleName': 'plan', 'toDoListType': ''});
+        ScreenUtils.openScreenWithData(context, AppRouter.todoList, {
+          'moduleName': UserSession.instance.selectedModule,
+          'toDoListType': ''
+        });
         break;
       case 1:
         ScreenUtils.openScreenWithData(context, AppRouter.projectListWidget, {
-          'moduleName': 'plan',
+          'moduleName': UserSession.instance.selectedModule,
           'toDoListType': 'ProjectPending',
           'isMenu': true
         });
         break;
       case 2:
         ScreenUtils.openScreenWithData(context, AppRouter.taskListWidget, {
-          'moduleName': 'plan',
+          'moduleName': UserSession.instance.selectedModule,
           'toDoListType': 'ListProcessingApproval',
           'isMenu': true
         });
         break;
       case 3:
         ScreenUtils.openScreenWithData(context, AppRouter.taskListWidget, {
-          'moduleName': 'plan',
+          'moduleName': UserSession.instance.selectedModule,
           'toDoListType': 'ListProgressApproval',
           'isMenu': true
         });
