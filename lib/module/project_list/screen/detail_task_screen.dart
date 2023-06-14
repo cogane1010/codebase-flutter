@@ -72,7 +72,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.TaskTypeName.toString()
+                                ? vm.taskInfo.TaskTypeName.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -84,7 +84,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.Name.toString()
+                                ? vm.taskInfo.Name.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -96,7 +96,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.ParentName.toString()
+                                ? vm.taskInfo.ParentName.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -108,7 +108,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.AssignedOrgName.toString()
+                                ? vm.taskInfo.AssignedOrgName.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -120,7 +120,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.AssignedUserName.toString()
+                                ? vm.taskInfo.AssignedUserName.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -132,7 +132,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.ResConfirmLoc.toString()
+                                ? vm.taskInfo.ResConfirmLoc.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -144,7 +144,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.ResConfirmMethod.toString()
+                                ? vm.taskInfo.ResConfirmMethod.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -155,7 +155,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                           ),
                           Text(
                             !isEmpty(vm.taskInfo)
-                                ? vm.taskInfo!.Note.toString()
+                                ? vm.taskInfo.Note.toString()
                                 : "",
                             style: textStyleContent,
                           ),
@@ -178,7 +178,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                                       ),
                                       Text(
                                         !isEmpty(vm.taskInfo)
-                                            ? vm.taskInfo!.Density.toString()
+                                            ? vm.taskInfo.Density.toString()
                                             : "",
                                         style: textStyleContent,
                                       ),
@@ -206,7 +206,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                                           ),
                                           Text(
                                             !isEmpty(vm.taskInfo)
-                                                ? vm.taskInfo!.Cost.toString()
+                                                ? vm.taskInfo.Cost.toString()
                                                 : "",
                                             style: textStyleContent,
                                           ),
@@ -236,7 +236,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                                       ),
                                       Text(
                                         !isEmpty(vm.taskInfo)
-                                            ? vm.taskInfo!.PriorityName
+                                            ? vm.taskInfo.PriorityName
                                                 .toString()
                                             : "",
                                         style: textStyleContent,
@@ -265,7 +265,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                                           ),
                                           Text(
                                             !isEmpty(vm.taskInfo)
-                                                ? vm.taskInfo!.StatusName
+                                                ? vm.taskInfo.StatusName
                                                     .toString()
                                                 : "",
                                             style: textStyleContent,
