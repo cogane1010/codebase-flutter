@@ -5,6 +5,7 @@ import 'package:brg_management/resources/color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../common/widget/base_background.dart';
+import '../../../common/widget/navigation_drawer_widget.dart';
 import '../../../configs/router.dart';
 import '../../../core/utils/screen_util.dart';
 import '../../../core/utils/theme_util.dart';
@@ -36,6 +37,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: NavigationDrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: Dimens.size50,

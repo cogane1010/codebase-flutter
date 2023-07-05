@@ -2,7 +2,6 @@ import 'package:brg_management/resources/color.dart';
 import 'package:brg_management/resources/asset_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/utils/app_color.dart';
 import '../../resources/dimens.dart';
 import 'navigation_drawer_widget.dart';
 
@@ -28,7 +27,7 @@ class BasePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavigationDrawerWidget(),
+      endDrawer: NavigationDrawerWidget(),
       backgroundColor: backgroundColor,
       bottomNavigationBar: bottomNavigationBar,
       appBar: AppBar(
