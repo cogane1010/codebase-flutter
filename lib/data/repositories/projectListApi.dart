@@ -78,6 +78,24 @@ class ProjectListApi extends BaseApi {
     return validateResponse(response);
   }
 
+  Future<ApiResponse> getAdjustDeadlineData(String C_Approval_Request_Id,
+      String ModuleName, String toDoListType) async {
+    var request = jsonEncode({
+      "C_Approval_Request_Id": C_Approval_Request_Id,
+      "ModuleName": ModuleName
+    });
+    var urlData = getFullPath('/api/app/TodoList/DeadlineAdjustGetData');
+
+    var response = await httpRequest.sendPost(
+      requestBody: request,
+      token: "Bearer ${UserSession.instance.token}",
+      contentType: "application/json",
+      uri: urlData,
+    );
+
+    return validateResponse(response);
+  }
+
   Future<ApiResponse> approveOrRejectProjectAndTask(
       String ModuleName,
       String C_Approval_Request_Id,
@@ -95,6 +113,30 @@ class ProjectListApi extends BaseApi {
     if (TodoListType == 'ListProgressApproval') {
       urlData = getFullPath('/api/MobileApproval/approveOrRejectTaskProgress');
     }
+    var response = await httpRequest.sendPost(
+      requestBody: request,
+      token: "Bearer ${UserSession.instance.token}",
+      contentType: "application/json",
+      uri: urlData,
+    );
+    return validateResponse(response);
+  }
+
+  Future<ApiResponse> approveOrRejectAdjustDeadline(
+      String ModuleName,
+      String C_Approval_Request_Id,
+      bool IsApprove,
+      String ResponseNote,
+      String TodoListType) async {
+    var request = jsonEncode({
+      "ModuleName": ModuleName,
+      "C_Approval_Request_Id": C_Approval_Request_Id,
+      "IsApprove": IsApprove,
+      "ResponseNote": ResponseNote
+    });
+    var urlData =
+        getFullPath('/api/MobileApproval/approveOrRejectTaskDeadlineAdjust');
+
     var response = await httpRequest.sendPost(
       requestBody: request,
       token: "Bearer ${UserSession.instance.token}",

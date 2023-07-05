@@ -11,6 +11,7 @@ class AppColors {
   static const Color brownBGColor = Color(0xFFC4C4C4);
 
   static const Color redColor = Color(0xFFFF0000);
+  static const Color textRedColor = Color(0xffb01117);
   static const Color greenColor = Color(0xFF95CB60);
   static const Color orangeColor = Color(0xFFc56d29);
   static const Color blueColor = Color(0xFF80B0E8);
@@ -25,7 +26,8 @@ class AppColors {
   static const Color borderColor = Color(0xFFBBBBBB);
   static const Color settingIconColor = Color(0xFFD2AE7E);
   static const Color checkboxColor = Color(0x66D2AE7E);
-  static const Color appBarColor = Color(0xFF8B1A1D);
+  static const Color appBarColor = Color(0xffb8292e);
+  static const Color appBar1Color = Color(0xfff5f5f5);
   static const Color textColor = Color(0xE6414042);
   static const Color textColorChangePassWord = Color(0xFF8E8E8E);
   static const Color approveButton = Color.fromARGB(255, 100, 10, 10);

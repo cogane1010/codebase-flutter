@@ -62,7 +62,7 @@ class Dimens {
   static const size86 = 86.0;
   static const size88 = 88.0;
   static const size90 = 90.0;
-  static const size96= 96.0;
+  static const size96 = 96.0;
 
   static const size100 = 100.0;
   static const size110 = 110.0;
@@ -77,6 +77,7 @@ class Dimens {
   static const size225 = 225.0;
   static const size250 = 250.0;
   static const size300 = 300.0;
+  static const size400 = 400.0;
 
   static const smallIconSize = 16.0;
   static const normalIconSize = 24.0;

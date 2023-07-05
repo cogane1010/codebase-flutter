@@ -116,6 +116,8 @@ class TaskInfo {
       this.Name_Project,
       this.Code,
       this.Name,
+      this.OldStartDate,
+      this.OldDeadline,
       this.StartDate,
       this.Deadline,
       this.Actual_StartDate,
@@ -144,7 +146,7 @@ class TaskInfo {
       this.Progress});
 
   TaskInfo.fromJson(dynamic json) {
-    STT = isEmpty(json['STT']) ? json['STT'] : "";
+    STT = isEmpty(json['STT']) ? json['STT'] : null;
     IsRequestApprovalTask = isEmpty(json['IsRequestApprovalTask'])
         ? json['IsRequestApprovalTask']
         : null;
@@ -158,6 +160,12 @@ class TaskInfo {
         : json['ProjectName'];
     Code = !isEmpty(json['Code']) ? json['Code'] : json['TaskCode'];
     Name = !isEmpty(json['Name']) ? json['Name'] : json['TaskName'];
+    OldStartDate = !isEmpty(json['OldStartDate'])
+        ? DateTime.parse(json['OldStartDate'])
+        : null;
+    OldDeadline = !isEmpty(json['OldDeadline'])
+        ? DateTime.parse(json['OldDeadline'])
+        : null;
     StartDate =
         !isEmpty(json['StartDate']) ? DateTime.parse(json['StartDate']) : null;
     Deadline =
@@ -215,6 +223,8 @@ class TaskInfo {
   String? Name_Project;
   String? Code;
   String? Name;
+  DateTime? OldStartDate;
+  DateTime? OldDeadline;
   DateTime? StartDate;
   DateTime? Deadline;
   DateTime? Actual_StartDate;
@@ -334,4 +344,34 @@ class StatusModel {
 
   String? ValueStatus;
   String? NameStatus;
+}
+
+class AdjustProjectModel {
+  AdjustProjectModel({this.Request, this.Project, this.Tasks});
+
+  AdjustProjectModel.fromJson(dynamic json) {
+    if (json['Request'] != null) {
+      Request = RequestInfo.fromJson(json['Request']);
+    }
+
+    // if (json['Task'] != null) {
+    //   Tasks = TaskInfo.fromJson(json['Task']);
+    // }
+
+    if (json['lstTaskDeadlineAdjust'] != null) {
+      Tasks = <TaskInfo>[];
+      json['lstTaskDeadlineAdjust'].forEach((v) {
+        Tasks!.add(new TaskInfo.fromJson(v));
+      });
+    }
+
+    if (json['project'] != null) {
+      Project = ProjectInfo.fromJson(json['project']);
+    }
+  }
+
+  RequestInfo? Request;
+  List<TaskInfo>? Tasks;
+  //TaskInfo? Tasks;
+  ProjectInfo? Project;
 }

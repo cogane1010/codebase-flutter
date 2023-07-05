@@ -41,16 +41,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(bg_login), fit: BoxFit.fill),
+                        image: AssetImage(bg_home), fit: BoxFit.fill),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      UiHelper.verticalBox48,
+                      UiHelper.verticalBox100,
                       Visibility(
                           child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            width: 0,
+                          ),
+                        ),
                         margin: EdgeInsets.symmetric(horizontal: Dimens.size20),
                         child: BaseBackground(
+                          borderColor: AppColors.whiteColor,
                           elevation: 10,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,24 +75,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 50,
-                                            height: 50,
-                                            decoration: BoxDecoration(
-                                              color: AppColor.redBRG,
-                                              border: Border.all(),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Icon(
-                                                  Icons.home,
-                                                  size: Dimens.size40,
-                                                  color: Colors.white,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            width: 200,
                                             height: 50,
                                             decoration: BoxDecoration(
                                                 color: Colors.white),
@@ -96,6 +85,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         const EdgeInsets.all(
                                                             Dimens.size0),
                                                     child: Row(children: [
+                                                      UiHelper.horizontalBox8,
+                                                      Icon(
+                                                        Icons.build,
+                                                        size: Dimens.size28,
+                                                        color: AppColors
+                                                            .appBarColor,
+                                                      ),
                                                       TextButton(
                                                           style: TextButton
                                                               .styleFrom(
@@ -165,18 +161,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
+                              Divider(color: AppColors.black),
                             ],
                           ),
                         ),
                       )),
-                      UiHelper.verticalBox48,
                       Visibility(
                           visible: vm.homeData!.moduleData.length > 1,
                           child: Container(
                             margin:
                                 EdgeInsets.symmetric(horizontal: Dimens.size20),
                             child: BaseBackground(
+                              borderColor: AppColors.whiteColor,
                               elevation: 10,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,24 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Container(
-                                                width: 50,
-                                                height: 50,
-                                                decoration: BoxDecoration(
-                                                  color: AppColor.redBRG,
-                                                  border: Border.all(),
-                                                ),
-                                                child: Column(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.home,
-                                                      size: Dimens.size40,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 200,
                                                 height: 50,
                                                 decoration: BoxDecoration(
                                                     color: Colors.white),
@@ -224,6 +203,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     .all(
                                                                 Dimens.size0),
                                                         child: Row(children: [
+                                                          UiHelper
+                                                              .horizontalBox8,
+                                                          Icon(
+                                                            Icons.business,
+                                                            size: Dimens.size28,
+                                                            color: AppColors
+                                                                .appBarColor,
+                                                          ),
                                                           TextButton(
                                                               style: TextButton
                                                                   .styleFrom(
@@ -283,21 +270,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                               )
                                             ],
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
-                                  )
+                                  ),
+                                  Divider(color: AppColors.black),
                                 ],
                               ),
                             ),
                           )),
-                      UiHelper.verticalBox48,
                       Visibility(
                           visible: vm.homeData!.moduleData.length > 2,
                           child: Container(
                             margin:
                                 EdgeInsets.symmetric(horizontal: Dimens.size20),
                             child: BaseBackground(
+                              borderColor: AppColors.whiteColor,
                               elevation: 10,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -316,24 +304,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Container(
-                                                width: 50,
-                                                height: 50,
-                                                decoration: BoxDecoration(
-                                                  color: AppColor.redBRG,
-                                                  border: Border.all(),
-                                                ),
-                                                child: Column(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.home,
-                                                      size: Dimens.size40,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 200,
                                                 height: 50,
                                                 decoration: BoxDecoration(
                                                     color: Colors.white),
@@ -345,6 +315,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     .all(
                                                                 Dimens.size0),
                                                         child: Row(children: [
+                                                          UiHelper
+                                                              .horizontalBox8,
+                                                          Icon(
+                                                            Icons.assignment,
+                                                            size: Dimens.size28,
+                                                            color: AppColors
+                                                                .appBarColor,
+                                                          ),
                                                           TextButton(
                                                               style: TextButton
                                                                   .styleFrom(
@@ -412,7 +390,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           )),
-                      UiHelper.verticalBox300,
+                      UiHelper.verticalBox400,
                     ],
                   ),
                 ),

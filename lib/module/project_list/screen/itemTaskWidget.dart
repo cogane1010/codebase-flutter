@@ -1,3 +1,4 @@
+import 'package:brg_management/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../configs/app_localizations.dart';
@@ -35,11 +36,22 @@ class _ItemTaskWidgetState extends State<ItemTaskWidget> {
             "RequestType": widget.taskInfo?.RequestType
           });
         } else {
-          ScreenUtils.openScreenWithData(context, AppRouter.detailTaskWidget, {
-            "C_Approval_Request_Id": widget.taskInfo?.C_Approval_Request_Id,
-            "ModuleName": widget.viewModel.moduleName,
-            "TodoType": widget.viewModel.toDoListType
-          });
+          if (widget.taskInfo?.RequestType == Constants.TaskdealineAdj) {
+            ScreenUtils.openScreenWithData(
+                context, AppRouter.adjustProjectWidget, {
+              "C_Approval_Request_Id": widget.taskInfo?.C_Approval_Request_Id,
+              "ModuleName": widget.viewModel.moduleName,
+              "TodoType": widget.viewModel.toDoListType,
+              "RequestType": widget.taskInfo?.RequestType
+            });
+          } else {
+            ScreenUtils.openScreenWithData(
+                context, AppRouter.detailTaskWidget, {
+              "C_Approval_Request_Id": widget.taskInfo?.C_Approval_Request_Id,
+              "ModuleName": widget.viewModel.moduleName,
+              "TodoType": widget.viewModel.toDoListType
+            });
+          }
         }
       },
       child: Container(

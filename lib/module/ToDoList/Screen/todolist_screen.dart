@@ -38,8 +38,15 @@ class _TodoListScreenState extends State<TodoListScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: AppColors.appBarColor,
+        toolbarHeight: Dimens.size50,
+        backgroundColor: AppColors.appBar1Color,
         title: Text(AppLocalizations.of(context)!.translate("to_do_list")),
+        flexibleSpace: Image(
+          image: AssetImage(top_header),
+          fit: BoxFit.cover,
+        ),
+        foregroundColor: AppColors.black,
+        titleTextStyle: textStyleWhiteBoldTitle1,
       ),
       body: Consumer<TodoListViewModel>(
         builder: (context, vm, child) {
@@ -48,9 +55,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
               return SingleChildScrollView(
                 child: Container(
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(bg_login), fit: BoxFit.fill),
-                  ),
+                      // image: DecorationImage(
+                      //     image: AssetImage(bg_login), fit: BoxFit.fill),
+                      ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

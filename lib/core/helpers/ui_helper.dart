@@ -21,10 +21,12 @@ class UiHelper {
   static const verticalBox68 = SizedBox(height: Dimens.size68);
   static const verticalBox80 = SizedBox(height: Dimens.size80);
   static const verticalBox100 = SizedBox(height: Dimens.size100);
+  static const verticalBox160 = SizedBox(height: Dimens.size160);
   static const verticalBox180 = SizedBox(height: Dimens.size180);
   static const verticalBox200 = SizedBox(height: Dimens.size200);
   static const verticalBox216 = SizedBox(height: Dimens.size216);
   static const verticalBox300 = SizedBox(height: Dimens.size300);
+  static const verticalBox400 = SizedBox(height: Dimens.size400);
 
   static const horizontalBox4 = SizedBox(width: Dimens.size4);
   static const horizontalBox8 = SizedBox(width: Dimens.size8);
@@ -80,4 +82,14 @@ class UiHelper {
   static void unFocus(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
+
+  static const borderRadiusTopLeftRight = BorderRadius.only(
+    topLeft: Radius.circular(Dimens.size8),
+    topRight: Radius.circular(Dimens.size8),
+  );
+  static const borderRadiusbottomLeftRight = BorderRadius.only(
+      bottomLeft: Radius.circular(Dimens.size8),
+      bottomRight: Radius.circular(Dimens.size8),
+      topLeft: Radius.circular(Dimens.size0),
+      topRight: Radius.circular(Dimens.size0));
 }

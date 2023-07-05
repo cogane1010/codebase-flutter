@@ -3,6 +3,7 @@ import 'package:brg_management/resources/asset_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/utils/app_color.dart';
+import '../../resources/dimens.dart';
 import 'navigation_drawer_widget.dart';
 
 class BasePage extends StatelessWidget {
@@ -31,9 +32,17 @@ class BasePage extends StatelessWidget {
       backgroundColor: backgroundColor,
       bottomNavigationBar: bottomNavigationBar,
       appBar: AppBar(
-          title: pageTitle,
-          centerTitle: true,
-          backgroundColor: AppColor.redBRG),
+        //title: pageTitle,
+        centerTitle: true,
+        backgroundColor: AppColors.appBar1Color,
+        flexibleSpace: Image(
+          image: AssetImage(tab_todo),
+          fit: BoxFit.fill,
+        ),
+        foregroundColor: AppColors.black,
+        toolbarHeight: Dimens.size50,
+      ),
+
       // appBar: AppBar(
       //   title: pageTitle,
       //   centerTitle: true,

@@ -109,6 +109,7 @@ class ProjectListViewModel extends ChangeNotifier {
             ProjectRequestModel result = projectResponse!.data;
             if (!isEmpty(result) & !isEmpty(result.Data)) {
               projectInfos = result.Data!;
+              print(json.responseObject['Data']);
             }
             notifyListeners();
           } else {

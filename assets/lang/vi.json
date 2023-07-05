@@ -173,13 +173,19 @@
   "loai":"Loại",
   "duyet_hoan_thanh":"Duyệt hoàn thành công việc",
   "duyet_tien_do":"Duyệt tiến độ công việc",
-  "duyet_hoan_thanh_content":"Bạn có muốn duyệt hoàn thành công việc",
-  "duyet_tien_do_content":"Bạn có muốn duyệt tiến độ công việc",
+  "duyet_hoan_thanh_content":"Bạn có muốn duyệt hoàn thành công việc?",
+  "duyet_tien_do_content":"Bạn có muốn duyệt tiến độ công việc?",
   "khong_co_du_lieu":"Không có dữ liệu",
   "thong_tin_nguoi_dung":"Thông tin người dùng",
   "ho_ten":"Họ và tên:",  
   "don_vi":"Đơn vị:",
   "all":"tất cả",
   "danh_sach_hoan_thanh":"Công việc chờ\n duyệt tiến độ",
-  "danh_sach_cong_viec_phat_sinh":"Công việc phát sinh\n chờ duyệt"
+  "danh_sach_cong_viec_phat_sinh":"Công việc phát sinh\n chờ duyệt",
+  "duyet_dieu_chinh_deadline":"Duyệt điều chỉnh\n deadline",
+  "danh_sach_cong_viec":"Danh sách công việc",
+  "ngay_bat_dau_dieu_chinh":"Ngày bắt đầu điều chỉnh",
+  "han_hoan_thanh_dieu_chinh":"Hạn hoàn thành điều chỉnh",
+  "dieu_chinh_deadline":"Bạn có muốn duyệt điều chỉnh deadline?",
+  "dieu_chinh_deadline_false":"Bạn có muốn trả lại điều chỉnh deadline?"
 }

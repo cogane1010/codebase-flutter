@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 
 import '../core/utils/isEmpty.dart';
 import '../core/utils/screen_util.dart';
+import '../module/project_list/screen/approve_adjust_project_screen.dart';
 import '../module/project_list/screen/approve_detail_project_screen.dart';
 import '../module/project_list/screen/detail_project_screen.dart';
 import '../module/project_list/screen/detail_project_task_screen.dart';
@@ -37,6 +38,7 @@ class AppRouter {
   static String taskListWidget = '/taskListWidget';
   static String itemTaskWidget = '/itemTaskWidget';
   static String detailTaskWidget = '/detailTaskWidget';
+  static String adjustProjectWidget = '/adjustProjectWidget';
 
   static final Map<String, WidgetBuilder> appRouter = {};
 
@@ -56,6 +58,7 @@ class AppRouter {
     appRouter[detailProjectTask] = (ctx) => DetailTaskScreen();
     appRouter[taskListWidget] = (ctx) => TaskListWidget();
     appRouter[detailTaskWidget] = (ctx) => ApproveDetailProjectScreen();
+    appRouter[adjustProjectWidget] = (ctx) => ApproveAdjustProjectScreen();
   }
 
   static void inAppRouting() {

@@ -96,7 +96,7 @@
   "timeout": "Timeout",
   "text_confirmed": "CONFIRMED",
   "text_back": "BACK",
-  "app_name_title": "Work Management System",
+  "app_name_title": "Work Management\n System",
   "to_do_list": "To Do list",
   "danh_sach_du_an": "Project List",
   "duyet_cong_viec": "Approve Task",
@@ -155,5 +155,11 @@
   "don_vi":"Organisation:",
   "all":"all",
   "danh_sach_hoan_thanh":"Work pending approval",
-  "danh_sach_cong_viec_phat_sinh":"Work waiting for approval"
+  "danh_sach_cong_viec_phat_sinh":"Work waiting for approval",
+  "duyet_dieu_chinh_deadline":"Approve deadline",
+  "danh_sach_cong_viec":"Task list",  
+  "ngay_bat_dau_dieu_chinh":"Ngày bắt đầu điều chỉnh",
+  "han_hoan_thanh_dieu_chinh":"Hạn hoàn thành điều chỉnh",  
+  "dieu_chinh_deadline":"Bạn có muốn điều chỉnh deadline",  
+  "dieu_chinh_deadline_false":"Bạn có muốn trả lại điều chỉnh deadline"
 }

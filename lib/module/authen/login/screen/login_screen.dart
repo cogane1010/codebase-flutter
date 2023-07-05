@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: const EdgeInsets.only(
                               right: Dimens.size24,
                               bottom: Dimens.size26,
-                              top: Dimens.size60),
+                              top: Dimens.size40),
                           child: Align(
                               alignment: Alignment.bottomRight,
                               child: GestureDetector(
@@ -91,8 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                                 child: Image.asset(
                                   _setImage(),
-                                  height: Dimens.size32,
-                                  width: Dimens.size32,
+                                  height: Dimens.size36,
+                                  width: Dimens.size36,
                                 ),
                               )),
                         ),
@@ -101,12 +101,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               AppLocalizations.of(context)!
                                   .translate('app_name_title'),
                               style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                                  color: AppColors.textRedColor),
                               textAlign: TextAlign.center),
                         ),
-                        UiHelper.verticalBox100,
+                        UiHelper.verticalBox160,
                         Container(
                           padding:
                               EdgeInsets.symmetric(horizontal: Dimens.size24),
@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     fontSize: Dimens.size14,
                                     color: AppColors.textColor),
                                 // setImageNotBackground: bg_text_input,
-                                // backgroundImageAsset: bg_text_input_login,
+                                backgroundImageAsset: bg_text_input_login,
                                 controller: vm.emailController,
                                 hintText: AppLocalizations.of(context)!
                                     .translate('user_name'),
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     fontSize: Dimens.size14,
                                     color: AppColors.textColor),
                                 // setImageNotBackground: bg_text_input,
-                                // backgroundImageAsset: bg_text_input_login,
+                                backgroundImageAsset: bg_text_input_login,
                                 controller: vm.passwordController,
                                 hintColor: AppColors.black,
                                 hintText: AppLocalizations.of(context)!
@@ -225,11 +225,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Expanded(
                                     child: BaseButton(
                                       style: TextStyle(
-                                          fontSize: Dimens.size12,
-                                          color: AppColors.appBarColor),
-                                      textColor: AppColors.appBarColor,
+                                          fontSize: Dimens.size18,
+                                          color: AppColors.whiteColor),
+                                      textColor: AppColors.whiteColor,
                                       color: AppColors.whiteColor,
-                                      assetImage: bg_white_button,
+                                      assetImage: bg_red_button,
                                       height: Dimens.size40,
                                       text: AppLocalizations.of(context)!
                                           .translate('login'),
@@ -243,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       },
                                     ),
                                   ),
-                                  UiHelper.horizontalBox12,
+                                  //UiHelper.horizontalBox12,
                                   // GestureDetector(
                                   //   onTap: () async {
                                   //     vm.checkIsActiveBiometric(

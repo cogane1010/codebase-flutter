@@ -9,4 +9,5 @@ class Constants {
   static const String project_task = "taskInfo";
   static const String VND = "VND";
   static const String NON_REFUND = "NON_REFUND";
+  static const String TaskdealineAdj = "taskdealineAdj";
 }

@@ -20,7 +20,8 @@ const textStyleWhiteSmallTitle = TextStyle(
     color: Colors.white);
 const textStyleWhiteBoldTitle = TextStyle(
     fontSize: Dimens.size14, fontWeight: FontWeight.w700, color: Colors.white);
-
+const textStyleWhiteBoldTitle1 = TextStyle(
+    fontSize: Dimens.size16, fontWeight: FontWeight.w700, color: Colors.white);
 const textStyleBoldTitle = TextStyle(
     fontSize: Dimens.size16, fontWeight: FontWeight.w900, color: Colors.black);
 const textStyleBigBoldTitle = TextStyle(
@@ -66,6 +67,10 @@ const textStyleNormalItalicContent = TextStyle(
     color: Colors.black,
     fontStyle: FontStyle.italic);
 
+const textStyleblackBoldContent = TextStyle(
+    fontSize: Dimens.size14,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black);
 const textStyleOrangeContent = TextStyle(
     fontSize: Dimens.size24,
     fontWeight: FontWeight.normal,

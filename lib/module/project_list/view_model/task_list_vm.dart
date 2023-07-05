@@ -24,6 +24,7 @@ class TaskListViewModel extends ChangeNotifier {
   String titleBar = "";
   List<TaskInfo> taskInfos = [];
   TaskDetailModel taskDetailModel = new TaskDetailModel();
+  AdjustProjectModel adjustProjectModel = new AdjustProjectModel();
   Color headerBorder = Convertors.hexToColor('#9f0010');
   List<StatusModel> statuses = [
     new StatusModel("-1", "all"),
@@ -57,6 +58,18 @@ class TaskListViewModel extends ChangeNotifier {
       this.moduleName = ModuleName;
       getProgressApprovalGetData(
           C_Approval_Request_Id, ModuleName, ToDoListType);
+    }
+  }
+
+  void initAdjustDeadlineViewModel(
+      {String? C_Approval_Request_Id,
+      String? ModuleName,
+      String? ToDoListType,
+      String? RequestType}) {
+    this.taskDetailModel = new TaskDetailModel();
+    if (!isEmpty(ModuleName)) {
+      this.moduleName = ModuleName;
+      getAdjustDeadlineData(C_Approval_Request_Id, ModuleName, ToDoListType);
     }
   }
 
@@ -142,6 +155,34 @@ class TaskListViewModel extends ChangeNotifier {
     }
   }
 
+  void getAdjustDeadlineData(String? C_Approval_Request_Id, String? ModuleName,
+      String? TodoListType) async {
+    EasyLoading.show();
+
+    ApiResponse json = await projectListApi.getAdjustDeadlineData(
+        C_Approval_Request_Id!, ModuleName!, TodoListType!);
+    if (json.success) {
+      taskDetailResponse = BaseResponseApi<AdjustProjectModel>.fromJson(
+          json.responseObject,
+          compileData: (data) => !isEmpty(json.responseObject['Data'])
+              ? AdjustProjectModel.fromJson(json.responseObject['Data'])
+              : AdjustProjectModel());
+
+      if (taskDetailResponse!.isSuccess!) {
+        adjustProjectModel = taskDetailResponse!.data;
+        notifyListeners();
+      } else {
+        showAlertDialog(
+            content: taskDetailResponse?.errorMessage,
+            context: NavigationService.navigatorKey.currentContext!,
+            defaultActionText: "Đóng");
+      }
+      EasyLoading.dismiss();
+    } else {
+      EasyLoading.dismiss();
+    }
+  }
+
   void getProgressApprovalGetData(String? C_Approval_Request_Id,
       String? ModuleName, String? TodoListType) async {
     EasyLoading.show();
@@ -208,6 +249,51 @@ class TaskListViewModel extends ChangeNotifier {
       String TodoListType) async {
     EasyLoading.show();
     ApiResponse json = await projectListApi.approveOrRejectProjectAndTask(
+        moduleName, approvalRequestId, isApprove, notes, TodoListType);
+    if (json.success) {
+      var result = BaseResponseApi<ApproveModel>.fromJson(json.responseObject,
+          compileData: (data) => !isEmpty(json.responseObject['Data'])
+              ? ApproveModel.fromJson(json.responseObject['Data'])
+              : ApproveModel());
+      var content =
+          AppLocalizations.of(NavigationService.navigatorKey.currentContext!)!
+              .translate('not_ok');
+      if (result.isSuccess!) {
+        content =
+            AppLocalizations.of(NavigationService.navigatorKey.currentContext!)!
+                .translate('result_ok');
+        if (isApprove) {
+          this.taskDetailModel.Tasks!.StatusName = "Đã duyệt";
+        } else {
+          this.taskDetailModel.Tasks!.StatusName = "Đã trả lại";
+        }
+        this.isShowButton = false;
+        print(this.taskDetailModel.Tasks!.StatusName);
+        notifyListeners();
+      } else {
+        if (!isEmpty(result.errorMessage)) {
+          content = result.errorMessage.toString();
+        }
+      }
+      showAlertDialog(
+          content: content,
+          context: NavigationService.navigatorKey.currentContext!,
+          defaultActionText: "Đóng");
+      notifyListeners();
+      EasyLoading.dismiss();
+    } else {
+      EasyLoading.dismiss();
+    }
+  }
+
+  void approveOrRejectAdjustDeadline(
+      String moduleName,
+      String approvalRequestId,
+      bool isApprove,
+      String notes,
+      String TodoListType) async {
+    EasyLoading.show();
+    ApiResponse json = await projectListApi.approveOrRejectAdjustDeadline(
         moduleName, approvalRequestId, isApprove, notes, TodoListType);
     if (json.success) {
       var result = BaseResponseApi<ApproveModel>.fromJson(json.responseObject,
