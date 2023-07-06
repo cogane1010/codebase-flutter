@@ -32,7 +32,9 @@ class TaskListViewModel extends ChangeNotifier {
     new StatusModel("1", "approve"),
     new StatusModel("0", "unapprove")
   ];
+  TextEditingController reasonController = new TextEditingController();
   bool isShowButton = true;
+
   void initViewModel({String? ModuleName, String? ToDoListType, bool? IsMenu}) {
     this.selectedStatus = '-1';
     print("initViewModel moduleName ${ModuleName}  ${ToDoListType}");
@@ -53,7 +55,7 @@ class TaskListViewModel extends ChangeNotifier {
       {String? C_Approval_Request_Id,
       String? ModuleName,
       String? ToDoListType}) {
-    this.taskDetailModel = new TaskDetailModel();
+    clear();
     if (!isEmpty(ModuleName)) {
       this.moduleName = ModuleName;
       getProgressApprovalGetData(
@@ -66,7 +68,7 @@ class TaskListViewModel extends ChangeNotifier {
       String? ModuleName,
       String? ToDoListType,
       String? RequestType}) {
-    this.taskDetailModel = new TaskDetailModel();
+    clear();
     if (!isEmpty(ModuleName)) {
       this.moduleName = ModuleName;
       getAdjustDeadlineData(C_Approval_Request_Id, ModuleName, ToDoListType);
@@ -87,6 +89,7 @@ class TaskListViewModel extends ChangeNotifier {
 
   void clear() {
     this.taskDetailModel = new TaskDetailModel();
+    this.reasonController.text = "";
   }
 
   void initListener() {}
@@ -248,6 +251,9 @@ class TaskListViewModel extends ChangeNotifier {
       String notes,
       String TodoListType) async {
     EasyLoading.show();
+    if (!isEmpty(this.reasonController)) {
+      notes = reasonController.text;
+    }
     ApiResponse json = await projectListApi.approveOrRejectProjectAndTask(
         moduleName, approvalRequestId, isApprove, notes, TodoListType);
     if (json.success) {
@@ -293,6 +299,9 @@ class TaskListViewModel extends ChangeNotifier {
       String notes,
       String TodoListType) async {
     EasyLoading.show();
+    if (!isEmpty(this.reasonController)) {
+      notes = this.reasonController.text;
+    }
     ApiResponse json = await projectListApi.approveOrRejectAdjustDeadline(
         moduleName, approvalRequestId, isApprove, notes, TodoListType);
     if (json.success) {

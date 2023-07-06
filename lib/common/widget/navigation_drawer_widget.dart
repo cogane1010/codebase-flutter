@@ -8,69 +8,130 @@ import '../../data/local/user_session.dart';
 import '../../module/page/user_page.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
-  final padding = EdgeInsets.symmetric(horizontal: 20);
+  final padding = EdgeInsets.symmetric(horizontal: 10);
   @override
   Widget build(BuildContext context) {
     final name = UserSession.instance.fullName;
     final urlImage = 'assets/png/brg_icon.png';
-
-    return Drawer(
-      child: Material(
-        color: AppColor.redBRG,
-        child: ListView(
-          children: <Widget>[
-            buildHeader(
-              urlImage: urlImage,
-              name: name,
-              onClicked: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => UserPage(
-                  name: name,
+    return Container(
+        width: 200,
+        child: Drawer(
+          child: Material(
+            color: AppColor.redBRG,
+            child: ListView(
+              children: <Widget>[
+                buildHeader(
                   urlImage: urlImage,
+                  name: name,
+                  onClicked: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => UserPage(
+                      name: name,
+                      urlImage: urlImage,
+                    ),
+                  )),
                 ),
-              )),
+                Container(
+                  width: 70.0,
+                  padding: padding,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 0),
+                      buildMenuItem(
+                        text: AppLocalizations.of(context)!
+                            .translate('to_do_list'),
+                        onClicked: () => selectedItem(context, 0),
+                      ),
+                      const SizedBox(height: 0),
+                      buildMenuItem(
+                        text: AppLocalizations.of(context)!
+                            .translate('danh_sach_du_an'),
+                        onClicked: () => selectedItem(context, 1),
+                      ),
+                      const SizedBox(height: 0),
+                      buildMenuItem(
+                        text: AppLocalizations.of(context)!
+                            .translate('duyet_cong_viec'),
+                        onClicked: () => selectedItem(context, 2),
+                      ),
+                      const SizedBox(height: 0),
+                      buildMenuItem(
+                        text: AppLocalizations.of(context)!
+                            .translate('duyet_tien_do'),
+                        onClicked: () => selectedItem(context, 3),
+                      ),
+                      const SizedBox(height: 130),
+                      Divider(color: Colors.white70),
+                      const SizedBox(height: 10),
+                      buildBottomMenuItem(
+                        text: AppLocalizations.of(context)!.translate('logout'),
+                        icon: Icons.logout,
+                        onClicked: () => logout(context, 4),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Container(
-              padding: padding,
-              child: Column(
-                children: [
-                  const SizedBox(height: 0),
-                  buildMenuItem(
-                    text: AppLocalizations.of(context)!.translate('to_do_list'),
-                    onClicked: () => selectedItem(context, 0),
-                  ),
-                  const SizedBox(height: 0),
-                  buildMenuItem(
-                    text: AppLocalizations.of(context)!
-                        .translate('danh_sach_du_an'),
-                    onClicked: () => selectedItem(context, 1),
-                  ),
-                  const SizedBox(height: 0),
-                  buildMenuItem(
-                    text: AppLocalizations.of(context)!
-                        .translate('duyet_cong_viec'),
-                    onClicked: () => selectedItem(context, 2),
-                  ),
-                  const SizedBox(height: 0),
-                  buildMenuItem(
-                    text: AppLocalizations.of(context)!
-                        .translate('duyet_tien_do'),
-                    onClicked: () => selectedItem(context, 3),
-                  ),
-                  const SizedBox(height: 130),
-                  Divider(color: Colors.white70),
-                  const SizedBox(height: 10),
-                  buildBottomMenuItem(
-                    text: AppLocalizations.of(context)!.translate('logout'),
-                    icon: Icons.logout,
-                    onClicked: () => logout(context, 4),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
+    // return Drawer(
+    //   child: Material(
+    //     color: AppColor.redBRG,
+    //     child: ListView(
+    //       children: <Widget>[
+    //         buildHeader(
+    //           urlImage: urlImage,
+    //           name: name,
+    //           onClicked: () => Navigator.of(context).push(MaterialPageRoute(
+    //             builder: (context) => UserPage(
+    //               name: name,
+    //               urlImage: urlImage,
+    //             ),
+    //           )),
+    //         ),
+    //         Container(
+    //           width: 70.0,
+    //           padding: padding,
+    //           child: Column(
+    //             children: [
+    //               const SizedBox(height: 0),
+    //               buildMenuItem(
+    //                 text: AppLocalizations.of(context)!.translate('to_do_list'),
+    //                 onClicked: () => selectedItem(context, 0),
+    //               ),
+    //               const SizedBox(height: 0),
+    //               buildMenuItem(
+    //                 text: AppLocalizations.of(context)!
+    //                     .translate('danh_sach_du_an'),
+    //                 onClicked: () => selectedItem(context, 1),
+    //               ),
+    //               const SizedBox(height: 0),
+    //               buildMenuItem(
+    //                 text: AppLocalizations.of(context)!
+    //                     .translate('duyet_cong_viec'),
+    //                 onClicked: () => selectedItem(context, 2),
+    //               ),
+    //               const SizedBox(height: 0),
+    //               buildMenuItem(
+    //                 text: AppLocalizations.of(context)!
+    //                     .translate('duyet_tien_do'),
+    //                 onClicked: () => selectedItem(context, 3),
+    //               ),
+    //               const SizedBox(height: 130),
+    //               Divider(color: Colors.white70),
+    //               const SizedBox(height: 10),
+    //               buildBottomMenuItem(
+    //                 text: AppLocalizations.of(context)!.translate('logout'),
+    //                 icon: Icons.logout,
+    //                 onClicked: () => logout(context, 4),
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 
   Widget buildHeader({

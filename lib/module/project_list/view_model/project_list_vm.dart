@@ -14,7 +14,7 @@ import '../../../main.dart';
 class ProjectListViewModel extends ChangeNotifier {
   ProjectListApi projectListApi = ProjectListApi();
   ProjectDetailModel? projectDetailModel;
-
+  TextEditingController reasonController = new TextEditingController();
   String toDoListType = 'ProjectPending';
   String? moduleName;
   String statudDefualt = "1";
@@ -56,7 +56,8 @@ class ProjectListViewModel extends ChangeNotifier {
       {String? C_Approval_Request_Id,
       String? ModuleName,
       String? ToDoListType}) {
-    this.taskInfo = new TaskInfo();
+    clear();
+    //this.taskInfo = new TaskInfo();
     if (!isEmpty(ModuleName)) {
       this.moduleName = ModuleName;
       getProjectAndTaskListGetData(C_Approval_Request_Id, ModuleName);
@@ -74,6 +75,7 @@ class ProjectListViewModel extends ChangeNotifier {
   void clear() {
     projectInfos.clear();
     this.taskInfo = new TaskInfo();
+    this.reasonController.text = "";
   }
 
   void initListener() {}
@@ -194,6 +196,9 @@ class ProjectListViewModel extends ChangeNotifier {
       String notes,
       String ToDoListType) async {
     EasyLoading.show();
+    if (!isEmpty(this.reasonController)) {
+      notes = this.reasonController.text;
+    }
     ApiResponse json = await projectListApi.approveOrRejectProjectAndTask(
         moduleName, approvalRequestId, isApprove, notes, ToDoListType);
     if (json.success) {

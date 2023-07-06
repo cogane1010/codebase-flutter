@@ -399,11 +399,12 @@ class _DetailProjectScreenState extends State<DetailProjectScreen> {
     return GestureDetector(
       onTap: () async {
         if (C_Approval_Request_Id != null) {
-          confirmAlertDialog(
+          confirmReturnAlertDialog(
               title: "Xác nhận",
               content:
                   "${AppLocalizations.of(context)!.translate("tra_lai_button_content")}",
               context: context,
+              returnReason: vm.reasonController,
               cancelActionText:
                   AppLocalizations.of(context)!.translate('huy_button'),
               defaultActionText: "Đồng ý",

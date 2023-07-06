@@ -39,7 +39,7 @@ class BasePage extends StatelessWidget {
           fit: BoxFit.fill,
         ),
         foregroundColor: AppColors.black,
-        toolbarHeight: Dimens.size50,
+        toolbarHeight: Dimens.size56,
       ),
 
       // appBar: AppBar(

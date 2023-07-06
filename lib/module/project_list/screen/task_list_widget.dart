@@ -5,8 +5,10 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../configs/app_localizations.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/isEmpty.dart';
+import '../../../core/utils/theme_util.dart';
 import '../../../data/model/ProjectListModel.dart';
 import '../../../resources/color.dart';
+import '../../../resources/dimens.dart';
 import '../view_model/task_list_vm.dart';
 import 'itemTaskWidget.dart';
 
@@ -111,14 +113,32 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(AppLocalizations.of(context)!
-                                .translate(choice.NameStatus!.toLowerCase())),
-                            selectedIndex == index
-                                ? Icon(
-                                    Icons.done,
-                                    color: AppColor.redMax,
-                                  )
-                                : SizedBox(),
+                            Container(
+                                width: 120.0,
+                                height: 30.0,
+                                padding: EdgeInsets.only(
+                                    left: Dimens.size10,
+                                    right: Dimens.size5,
+                                    bottom: Dimens.size2,
+                                    top: Dimens.size5),
+                                decoration: BoxDecoration(
+                                    color: index == 0
+                                        ? AppColors.greenColor
+                                        : index == 1
+                                            ? AppColors.blueColor
+                                            : index == 2
+                                                ? AppColors.lightBlueColor
+                                                : AppColors.pinkColor,
+                                    border: Border.all(
+                                      color: AppColors.grayLineOpacity,
+                                    ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
+                                child: Text(
+                                  AppLocalizations.of(context)!.translate(
+                                      choice.NameStatus!.toLowerCase()),
+                                  style: textStyleBoldTitle,
+                                )),
                           ],
                         ),
                       );

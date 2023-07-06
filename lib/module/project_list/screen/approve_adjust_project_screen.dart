@@ -246,11 +246,12 @@ class _ApproveAdjustProjectScreenState
     return GestureDetector(
       onTap: () async {
         if (C_Approval_Request_Id != null) {
-          confirmAlertDialog(
+          confirmReturnAlertDialog(
               title: "Xác nhận",
               content: AppLocalizations.of(context)!
                   .translate('dieu_chinh_deadline_false'),
               context: context,
+              returnReason: vm.reasonController,
               cancelActionText:
                   AppLocalizations.of(context)!.translate('huy_button'),
               defaultActionText: "Đồng ý",
