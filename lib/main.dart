@@ -72,8 +72,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    EasyLoading.instance..userInteractions = false;
-    Future.delayed(const Duration(milliseconds: 3000), () async {
+    EasyLoading.instance.userInteractions = false;
+    Future.delayed(const Duration(milliseconds: 5000), () async {
       //   // init firebase message here
       //   await Messaging.initFirebaseMessaging();
       //   await Messaging.getFirebaseToken();

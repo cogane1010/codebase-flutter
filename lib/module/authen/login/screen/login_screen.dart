@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: const EdgeInsets.only(
                               right: Dimens.size24,
                               bottom: Dimens.size26,
-                              top: Dimens.size40),
+                              top: Dimens.size56),
                           child: Align(
                               alignment: Alignment.bottomRight,
                               child: GestureDetector(
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: AppColors.textRedColor),
                               textAlign: TextAlign.center),
                         ),
-                        UiHelper.verticalBox160,
+                        UiHelper.verticalBox250,
                         Container(
                           padding:
                               EdgeInsets.symmetric(horizontal: Dimens.size24),
