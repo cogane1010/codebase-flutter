@@ -103,13 +103,13 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                                width: 120.0,
-                                height: 30.0,
+                                width: 125.0,
+                                height: 25.0,
                                 padding: EdgeInsets.only(
                                     left: Dimens.size10,
                                     right: Dimens.size5,
                                     bottom: Dimens.size2,
-                                    top: Dimens.size5),
+                                    top: Dimens.size2),
                                 decoration: BoxDecoration(
                                     color: index == 0
                                         ? AppColors.greenColor
@@ -123,10 +123,12 @@ class _ProjectListWidgetState extends State<ProjectListWidget> {
                                     ),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5))),
-                                child: Text(
-                                  AppLocalizations.of(context)!.translate(
-                                      choice.NameStatus!.toLowerCase()),
-                                  style: textStyleBoldTitle,
+                                child: Center(
+                                  child: Text(
+                                    AppLocalizations.of(context)!.translate(
+                                        choice.NameStatus!.toLowerCase()),
+                                    style: textStyleBoldTitle,
+                                  ),
                                 )),
                           ],
                         ),
