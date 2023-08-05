@@ -22,10 +22,10 @@ class HttpRequest {
       int timeout = 60,
       Map<String, String>? headers}) async {
     debugPrint(uri.toString());
-    bool isInternet = await check();
-    if (!isInternet) {
-      return http.Response('', 12029);
-    }
+    // bool isInternet = await check();
+    // if (!isInternet) {
+    //   return http.Response('', 12029);
+    // }
     Map<String, String> defaultHeaders = {
       HttpHeaders.contentTypeHeader:
           " application/json; x-www-form-urlencoded;charset=UTF-8",
@@ -73,10 +73,10 @@ class HttpRequest {
       int timeout = 60}) async {
     debugPrint(uri.toString());
     debugPrint(requestBody.toString());
-    bool isInternet = await check();
-    if (!isInternet) {
-      return http.Response('', 12029);
-    }
+    // bool isInternet = await check();
+    // if (!isInternet) {
+    //   return http.Response('', 12029);
+    // }
     try {
       Map<String, String> headers = {
         HttpHeaders.contentTypeHeader: contentType,
@@ -117,10 +117,10 @@ class HttpRequest {
       int timeout = 30}) async {
     debugPrint(uri.toString());
     debugPrint(requestBody.toString());
-    bool isInternet = await check();
-    if (!isInternet) {
-      return http.Response('', 12029);
-    }
+    // bool isInternet = await check();
+    // if (!isInternet) {
+    //   return http.Response('', 12029);
+    // }
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: "application/json"
     };

@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:brg_management/module/splash/view_model/splash_vm.dart';
 import 'package:brg_management/resources/asset_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../configs/router.dart';
+import '../../../core/utils/screen_util.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -19,6 +24,11 @@ class _SplashScreenState extends State<SplashScreen> {
       viewModel = Provider.of<SplashViewModel>(context, listen: false);
       viewModel.initData();
     });
+
+    Timer(
+      Duration(seconds: 5),
+      () => ScreenUtils.openScreenAndRemoveUtil(context, AppRouter.login),
+    );
     super.initState();
   }
 

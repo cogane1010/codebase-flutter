@@ -26,6 +26,8 @@ const textStyleBoldTitle = TextStyle(
     fontSize: Dimens.size16, fontWeight: FontWeight.w900, color: Colors.black);
 const textStyleBigBoldTitle = TextStyle(
     fontSize: Dimens.size18, fontWeight: FontWeight.w700, color: Colors.black);
+const textStyleBig20BoldTitle = TextStyle(
+    fontSize: Dimens.size20, fontWeight: FontWeight.w700, color: Colors.black);
 const textStyleSmallBoldTitle = TextStyle(
     fontSize: Dimens.size14,
     fontWeight: FontWeight.w700,

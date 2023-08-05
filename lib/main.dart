@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:brg_management/configs/app_localizations.dart';
 import 'package:brg_management/core/utils/locale_util.dart';
 import 'package:brg_management/module/authen/login/screen/login_screen.dart';
+import 'package:brg_management/module/splash/screen/splash_screen.dart';
 import 'package:brg_management/resources/enums.dart';
 import 'package:device_info/device_info.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -15,7 +15,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'configs/app_config.dart';
-import 'configs/messaging.dart';
 import 'configs/provider.dart';
 import 'configs/router.dart';
 
@@ -152,7 +151,7 @@ class _RootViewState extends State<RootView> {
       });
     });
 
-    return LoginScreen();
+    return SplashScreen();
   }
 
   Future<bool> checkSafeDevice() async {

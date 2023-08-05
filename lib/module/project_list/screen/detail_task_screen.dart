@@ -27,7 +27,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
 
   @override
   void initState() {
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       viewModel = Provider.of<ProjectListViewModel>(context, listen: false);
       final Object? data = ModalRoute.of(context)?.settings.arguments;
       if (!isEmpty(data)) {
@@ -165,7 +165,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  height: 50,
+                                  height: 60,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -190,31 +190,27 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                    height: 50,
-                                    child: Container(
-                                      height: 50,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .translate('chi_phi'),
-                                            style: textStyleBoldTitle,
-                                          ),
-                                          Text(
-                                            !isEmpty(vm.taskInfo)
-                                                ? vm.taskInfo.Cost.toString()
-                                                : "",
-                                            style: textStyleContent,
-                                          ),
-                                          Divider(
-                                              color: AppColors.grayLineOpacity)
-                                        ],
+                                  height: 60,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .translate('chi_phi'),
+                                        style: textStyleBoldTitle,
                                       ),
-                                    )),
+                                      Text(
+                                        !isEmpty(vm.taskInfo)
+                                            ? vm.taskInfo.Cost.toString()
+                                            : "",
+                                        style: textStyleContent,
+                                      ),
+                                      Divider(color: AppColors.grayLineOpacity)
+                                    ],
+                                  ),
+                                ),
                               )
                             ],
                           ),
@@ -223,7 +219,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  height: 50,
+                                  height: 60,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -249,32 +245,27 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                    height: 50,
-                                    child: Container(
-                                      height: 50,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .translate('trang_thai'),
-                                            style: textStyleBoldTitle,
-                                          ),
-                                          Text(
-                                            !isEmpty(vm.taskInfo)
-                                                ? vm.taskInfo.StatusName
-                                                    .toString()
-                                                : "",
-                                            style: textStyleContent,
-                                          ),
-                                          Divider(
-                                              color: AppColors.grayLineOpacity)
-                                        ],
+                                  height: 60,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .translate('trang_thai'),
+                                        style: textStyleBoldTitle,
                                       ),
-                                    )),
+                                      Text(
+                                        !isEmpty(vm.taskInfo)
+                                            ? vm.taskInfo.StatusName.toString()
+                                            : "",
+                                        style: textStyleContent,
+                                      ),
+                                      Divider(color: AppColors.grayLineOpacity)
+                                    ],
+                                  ),
+                                ),
                               )
                             ],
                           ),
@@ -283,7 +274,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  height: 50,
+                                  height: 60,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -308,7 +299,7 @@ class _DetailTaskScreenState extends State<DetailTaskScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                    height: 50,
+                                    height: 60,
                                     child: Container(
                                       height: 50,
                                       child: Column(

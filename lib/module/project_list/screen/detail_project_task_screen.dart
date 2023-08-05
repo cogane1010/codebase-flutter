@@ -136,7 +136,7 @@ class _DetailProjectTaskScreenState extends State<DetailProjectTasikScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  height: 50,
+                                  height: 60,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -163,33 +163,29 @@ class _DetailProjectTaskScreenState extends State<DetailProjectTasikScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                    height: 50,
-                                    child: Container(
-                                      height: 50,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .translate('trang_thai'),
-                                            style: textStyleBoldTitle,
-                                          ),
-                                          Text(
-                                            !isEmpty(vm.projectDetailModel)
-                                                ? vm.projectDetailModel!
-                                                    .Project!.StatusName
-                                                    .toString()
-                                                : "",
-                                            style: textStyleContent,
-                                          ),
-                                          Divider(
-                                              color: AppColors.grayLineOpacity)
-                                        ],
+                                  height: 60,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .translate('trang_thai'),
+                                        style: textStyleBoldTitle,
                                       ),
-                                    )),
+                                      Text(
+                                        !isEmpty(vm.projectDetailModel)
+                                            ? vm.projectDetailModel!.Project!
+                                                .StatusName
+                                                .toString()
+                                            : "",
+                                        style: textStyleContent,
+                                      ),
+                                      Divider(color: AppColors.grayLineOpacity)
+                                    ],
+                                  ),
+                                ),
                               )
                             ],
                           ),
@@ -198,7 +194,7 @@ class _DetailProjectTaskScreenState extends State<DetailProjectTasikScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                  height: 50,
+                                  height: 60,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -223,31 +219,27 @@ class _DetailProjectTaskScreenState extends State<DetailProjectTasikScreen> {
                               Expanded(
                                 flex: 5,
                                 child: Container(
-                                    height: 50,
-                                    child: Container(
-                                      height: 50,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .translate('han_hoan_thanh'),
-                                            style: textStyleBoldTitle,
-                                          ),
-                                          Text(
-                                            !isEmpty(vm.projectDetailModel)
-                                                ? "${DateTimeUtils.convertToString(vm.projectDetailModel?.Project!.Deadline)}"
-                                                : "",
-                                            style: textStyleContent,
-                                          ),
-                                          Divider(
-                                              color: AppColors.grayLineOpacity)
-                                        ],
+                                  height: 60,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .translate('han_hoan_thanh'),
+                                        style: textStyleBoldTitle,
                                       ),
-                                    )),
+                                      Text(
+                                        !isEmpty(vm.projectDetailModel)
+                                            ? "${DateTimeUtils.convertToString(vm.projectDetailModel?.Project!.Deadline)}"
+                                            : "",
+                                        style: textStyleContent,
+                                      ),
+                                      Divider(color: AppColors.grayLineOpacity)
+                                    ],
+                                  ),
+                                ),
                               )
                             ],
                           ),

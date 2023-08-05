@@ -118,7 +118,7 @@ class _ItemTaskWidgetState extends State<ItemTaskWidget> {
                                 Expanded(
                                     flex: 6,
                                     child: Text(
-                                      '${widget.taskInfo?.OrgName}',
+                                      '${widget.taskInfo?.AssignedOrgName}',
                                       style: textStyleTinyContent,
                                     ))
                               ],

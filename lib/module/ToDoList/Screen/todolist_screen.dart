@@ -119,12 +119,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                     right: 5,
                                                   ),
                                                   width: double.infinity,
-                                                  height: 30,
+                                                  height: 50,
                                                   decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                          color: vm
-                                                              .projectPendingheaderBorder,
-                                                          width: 2),
                                                       borderRadius:
                                                           BorderRadius.only(
                                                               topLeft: Radius
@@ -144,7 +140,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                             : "",
                                                         style:
                                                             textStyleBoldTitle,
-                                                      )
+                                                      ),
+                                                      Divider(
+                                                          thickness: 1,
+                                                          color: vm
+                                                              .projectPendingheaderBorder)
                                                     ],
                                                   ),
                                                 ),
@@ -165,7 +165,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                                   .toString()
                                                               : "",
                                                           style:
-                                                              textStyleBoldTitle,
+                                                              textStyleBig20BoldTitle,
                                                         ))
                                                       ],
                                                     )))
@@ -236,12 +236,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                       left: 5,
                                                       right: 5),
                                                   width: double.infinity,
-                                                  height: 30,
+                                                  height: 50,
                                                   decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                          color: vm
-                                                              .taskProcessingApprovalheaderBorder,
-                                                          width: 2),
                                                       borderRadius:
                                                           BorderRadius.only(
                                                               topLeft: Radius
@@ -261,7 +257,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                             : "",
                                                         style:
                                                             textStyleBoldTitle,
-                                                      )
+                                                      ),
+                                                      Divider(
+                                                          thickness: 1,
+                                                          color: vm
+                                                              .taskProcessingApprovalheaderBorder)
                                                     ],
                                                   ),
                                                 ),
@@ -283,7 +283,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                                     .toString()
                                                                 : "",
                                                             style:
-                                                                textStyleBoldTitle,
+                                                                textStyleBig20BoldTitle,
                                                           ))
                                                         ],
                                                       ),
@@ -354,12 +354,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                       left: 5,
                                                       right: 5),
                                                   width: double.infinity,
-                                                  height: 50,
+                                                  height: 70,
                                                   decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                          color: vm
-                                                              .taskProgressApprovalheaderBorder,
-                                                          width: 2),
                                                       borderRadius:
                                                           BorderRadius.only(
                                                               topLeft: Radius
@@ -379,7 +375,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                             : "",
                                                         style:
                                                             textStyleBoldTitle,
-                                                      )
+                                                      ),
+                                                      Divider(
+                                                          thickness: 1,
+                                                          color: vm
+                                                              .taskProgressApprovalheaderBorder)
                                                     ],
                                                   ),
                                                 ),
@@ -400,7 +400,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                                                   .toString()
                                                               : "",
                                                           style:
-                                                              textStyleBoldTitle,
+                                                              textStyleBig20BoldTitle,
                                                         ))
                                                       ],
                                                     ),

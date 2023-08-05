@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: AppColors.textRedColor),
                               textAlign: TextAlign.center),
                         ),
-                        UiHelper.verticalBox250,
+                        UiHelper.verticalBox180,
                         Container(
                           padding:
                               EdgeInsets.symmetric(horizontal: Dimens.size24),
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 validator: (value) =>
                                     vm.validateUserName(value!, context),
                               ),
-                              UiHelper.verticalBox32,
+                              UiHelper.verticalBox16,
                               BaseTextField(
                                 style: TextStyle(
                                     fontSize: Dimens.size14,

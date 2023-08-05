@@ -37,7 +37,7 @@
   "male": "Male",
   "female": "Female",
   "name": "Name",  
-  "term_and_conditions_applied": "Terms & Conditions\n applied",
+  "term_and_conditions_applied": "Hotline helpdesk",
   "require_enter_username_message": "Empty Phone number / email is not allowed",
   "require_enter_password_message": "Password cannot be left blank",
   "email_format_error":"Login information is incorrect",

@@ -25,6 +25,7 @@ class UiHelper {
   static const verticalBox180 = SizedBox(height: Dimens.size180);
   static const verticalBox200 = SizedBox(height: Dimens.size200);
   static const verticalBox216 = SizedBox(height: Dimens.size216);
+  static const verticalBox225 = SizedBox(height: Dimens.size225);
   static const verticalBox250 = SizedBox(height: Dimens.size250);
   static const verticalBox300 = SizedBox(height: Dimens.size300);
   static const verticalBox400 = SizedBox(height: Dimens.size400);

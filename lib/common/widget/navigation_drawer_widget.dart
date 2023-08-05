@@ -1,4 +1,6 @@
+import 'package:brg_management/core/helpers/helpers.dart';
 import 'package:brg_management/core/utils/app_color.dart';
+import 'package:brg_management/core/utils/isEmpty.dart';
 import 'package:flutter/material.dart';
 
 import '../../configs/app_localizations.dart';
@@ -35,33 +37,38 @@ class NavigationDrawerWidget extends StatelessWidget {
                   padding: padding,
                   child: Column(
                     children: [
-                      const SizedBox(height: 0),
-                      buildMenuItem(
-                        text: AppLocalizations.of(context)!
-                            .translate('to_do_list'),
-                        onClicked: () => selectedItem(context, 0),
-                      ),
-                      const SizedBox(height: 0),
-                      buildMenuItem(
-                        text: AppLocalizations.of(context)!
-                            .translate('danh_sach_du_an'),
-                        onClicked: () => selectedItem(context, 1),
-                      ),
-                      const SizedBox(height: 0),
-                      buildMenuItem(
-                        text: AppLocalizations.of(context)!
-                            .translate('duyet_cong_viec'),
-                        onClicked: () => selectedItem(context, 2),
-                      ),
-                      const SizedBox(height: 0),
-                      buildMenuItem(
-                        text: AppLocalizations.of(context)!
-                            .translate('duyet_tien_do'),
-                        onClicked: () => selectedItem(context, 3),
-                      ),
-                      const SizedBox(height: 130),
-                      Divider(color: Colors.white70),
-                      const SizedBox(height: 10),
+                      Visibility(
+                          visible:
+                              !isEmpty(UserSession.instance.selectedModule),
+                          child: Column(
+                            children: [
+                              buildMenuItem(
+                                text: AppLocalizations.of(context)!
+                                    .translate('to_do_list'),
+                                onClicked: () => selectedItem(context, 0),
+                              ),
+                              buildMenuItem(
+                                text: AppLocalizations.of(context)!
+                                    .translate('danh_sach_du_an'),
+                                onClicked: () => selectedItem(context, 1),
+                              ),
+                              buildMenuItem(
+                                text: AppLocalizations.of(context)!
+                                    .translate('duyet_cong_viec'),
+                                onClicked: () => selectedItem(context, 2),
+                              ),
+                              buildMenuItem(
+                                text: AppLocalizations.of(context)!
+                                    .translate('duyet_tien_do'),
+                                onClicked: () => selectedItem(context, 3),
+                              ),
+                              const SizedBox(height: 130),
+                              Divider(color: Colors.white70),
+                            ],
+                          )),
+                      Visibility(
+                          visible: isEmpty(UserSession.instance.selectedModule),
+                          child: UiHelper.verticalBox300),
                       buildBottomMenuItem(
                         text: AppLocalizations.of(context)!.translate('logout'),
                         icon: Icons.logout,
@@ -74,64 +81,6 @@ class NavigationDrawerWidget extends StatelessWidget {
             ),
           ),
         ));
-    // return Drawer(
-    //   child: Material(
-    //     color: AppColor.redBRG,
-    //     child: ListView(
-    //       children: <Widget>[
-    //         buildHeader(
-    //           urlImage: urlImage,
-    //           name: name,
-    //           onClicked: () => Navigator.of(context).push(MaterialPageRoute(
-    //             builder: (context) => UserPage(
-    //               name: name,
-    //               urlImage: urlImage,
-    //             ),
-    //           )),
-    //         ),
-    //         Container(
-    //           width: 70.0,
-    //           padding: padding,
-    //           child: Column(
-    //             children: [
-    //               const SizedBox(height: 0),
-    //               buildMenuItem(
-    //                 text: AppLocalizations.of(context)!.translate('to_do_list'),
-    //                 onClicked: () => selectedItem(context, 0),
-    //               ),
-    //               const SizedBox(height: 0),
-    //               buildMenuItem(
-    //                 text: AppLocalizations.of(context)!
-    //                     .translate('danh_sach_du_an'),
-    //                 onClicked: () => selectedItem(context, 1),
-    //               ),
-    //               const SizedBox(height: 0),
-    //               buildMenuItem(
-    //                 text: AppLocalizations.of(context)!
-    //                     .translate('duyet_cong_viec'),
-    //                 onClicked: () => selectedItem(context, 2),
-    //               ),
-    //               const SizedBox(height: 0),
-    //               buildMenuItem(
-    //                 text: AppLocalizations.of(context)!
-    //                     .translate('duyet_tien_do'),
-    //                 onClicked: () => selectedItem(context, 3),
-    //               ),
-    //               const SizedBox(height: 130),
-    //               Divider(color: Colors.white70),
-    //               const SizedBox(height: 10),
-    //               buildBottomMenuItem(
-    //                 text: AppLocalizations.of(context)!.translate('logout'),
-    //                 icon: Icons.logout,
-    //                 onClicked: () => logout(context, 4),
-    //               ),
-    //             ],
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 
   Widget buildHeader({
@@ -241,6 +190,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   void logout(BuildContext context, int index) {
     Navigator.of(context).pop();
     UserSession.instance.token = '';
+    UserSession.instance.selectedModule = '';
 
     ScreenUtils.closeScreen(context);
     ScreenUtils.openScreenAndRemoveUtil(context, AppRouter.login);

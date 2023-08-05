@@ -15,7 +15,7 @@ class HotLineView extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width,
-      height: Dimens.size34,
+      height: Dimens.size40,
       decoration: BoxDecoration(
         image:
             DecorationImage(image: AssetImage(bg_hot_line), fit: BoxFit.cover),
@@ -31,15 +31,15 @@ class HotLineView extends StatelessWidget {
           children: [
             Image.asset(
               'assets/png/support_agent.png',
-              width: 50,
-              height: 50,
+              width: 80,
+              height: 80,
             ),
             UiHelper.horizontalBox4,
             Text(
               AppLocalizations.of(context)!
                   .translate('term_and_conditions_applied'),
               style: TextStyle(
-                  fontSize: Dimens.size14,
+                  fontSize: Dimens.size20,
                   fontWeight: FontWeight.w400,
                   color: Colors.black45),
             ),

@@ -1,3 +1,4 @@
+import 'package:brg_management/core/utils/isEmpty.dart';
 import 'package:brg_management/module/project_list/view_model/project_list_vm.dart';
 import 'package:flutter/material.dart';
 
@@ -112,7 +113,9 @@ class _ItemProjectWidgetState extends State<ItemProjectWidget> {
                                 Expanded(
                                     flex: 6,
                                     child: Text(
-                                      '${widget.projectInfo?.ProjectType}',
+                                      !isEmpty(widget.projectInfo?.ProjectType)
+                                          ? '${widget.projectInfo?.ProjectType}'
+                                          : "",
                                       style: textStyleTinyContent,
                                     ))
                               ],
@@ -130,7 +133,9 @@ class _ItemProjectWidgetState extends State<ItemProjectWidget> {
                                 Expanded(
                                     flex: 6,
                                     child: Text(
-                                      '${widget.projectInfo?.lstOrgName}',
+                                      !isEmpty(widget.projectInfo?.lstOrgName)
+                                          ? '${widget.projectInfo?.lstOrgName}'
+                                          : "",
                                       style: textStyleTinyContent,
                                     ))
                               ],
